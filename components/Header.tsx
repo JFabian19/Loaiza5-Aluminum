@@ -30,11 +30,6 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" onClick={closeMenu}>
-            <img 
-              src="/image_11.png"
-              alt={`${BUSINESS_INFO.name} Logo`} 
-              className="h-12 w-auto object-contain"
-            />
             <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden sm:block">
               {BUSINESS_INFO.name}
             </span>
