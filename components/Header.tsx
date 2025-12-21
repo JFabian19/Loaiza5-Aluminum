@@ -31,7 +31,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" onClick={closeMenu}>
             <img 
-              src="/public/image_11.png"
+              src="/image_11.png"
               alt={`${BUSINESS_INFO.name} Logo`} 
               className="h-12 w-auto object-contain"
             />
