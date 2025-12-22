@@ -18,7 +18,7 @@ const ContactForm: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
-  // URL de tu Google Script
+  // URL de tu Google Script (La que pusiste en tu último mensaje)
   const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0iAnw8T5nKgyZEoBlcQhuprL5gvWPt7fn0jU5i4JIi5J5h8nGKF8mFpxBx31W9bo5/exec';
 
   const validate = () => {
@@ -41,27 +41,27 @@ const ContactForm: React.FC = () => {
 
     setStatus('submitting');
 
-    // 1. Crear un objeto FormData para enviar a Google Sheets
-    const dataToSend = new FormData();
+    // --- CAMBIO CLAVE AQUÍ ---
+    // Usamos URLSearchParams en lugar de FormData. 
+    // Esto garantiza que Google Apps Script pueda leer los datos correctamente.
+    const dataToSend = new URLSearchParams();
     dataToSend.append('name', formData.name);
     dataToSend.append('phone', formData.phone);
     dataToSend.append('email', formData.email);
     dataToSend.append('city', formData.city);
     dataToSend.append('service', formData.service);
     dataToSend.append('message', formData.message);
-    // Agregamos una fecha por si tu script no lo hace automático
     dataToSend.append('created_at', new Date().toISOString());
+    // -------------------------
 
     try {
-      // 2. Realizar la petición fetch al script de Google
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: dataToSend,
-        // Importante: 'no-cors' permite enviar datos a Google sin que el navegador bloquee la respuesta
+        body: dataToSend, // Fetch envía esto con el formato correcto automáticamente
         mode: 'no-cors' 
       });
 
-      // 3. Manejar el éxito
+      // Manejar el éxito
       console.log("Formulario enviado a Google Sheets");
       setStatus('success');
       setFormData({
@@ -78,7 +78,6 @@ const ContactForm: React.FC = () => {
     } catch (error) {
       console.error("Error enviando a Google Sheets:", error);
       setStatus('error');
-      // Opcional: Mostrar alerta al usuario si falla
       alert("There was an error sending your message. Please try again.");
     }
   };
