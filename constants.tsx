@@ -4,7 +4,7 @@ import { LayoutGrid, Hammer, Home, Umbrella, Sun } from 'lucide-react';
 export const BUSINESS_INFO = {
   name: "Loaiza5 Aluminum LLC",
   phone: "(813) 784-6949",
-  phoneClean: "18137846949",
+  phoneClean: "8137846949",
   email: "loaiza5aluminum@gmail.com",
   location: "Serving all of Florida",
   experience: "10+ Years",
