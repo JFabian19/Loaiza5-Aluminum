@@ -19,7 +19,7 @@ const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
 
   // URL de tu Google Script
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgvmY49BsiKgRXd1_wNGXetsQ0IT83tf6ZyuoM2C-D5ZnyYox3PdNrA0NtLvmifJ6m/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0iAnw8T5nKgyZEoBlcQhuprL5gvWPt7fn0jU5i4JIi5J5h8nGKF8mFpxBx31W9bo5/exec';
 
   const validate = () => {
     const newErrors: Partial<Record<keyof ContactFormData, string>> = {};
