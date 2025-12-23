@@ -11,30 +11,49 @@ import { About, ServiceAreasHub, PrivacyPolicy, Terms } from './pages/StaticPage
 import { SERVICES } from './constants';
 import { ArrowRight } from 'lucide-react';
 
-// Component to scroll to top on route change
+// Component to scroll to top + send GA4 page_view on route change (SPA)
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const location = useLocation();
+
   useEffect(() => {
+    // Scroll top on navigation
     window.scrollTo(0, 0);
-  }, [pathname]);
+
+    // GA4 SPA tracking: send virtual page_view on route change
+    const gtag = (window as any).gtag as undefined | ((...args: any[]) => void);
+    if (typeof gtag === 'function') {
+      gtag('event', 'page_view', {
+        page_path: location.pathname + location.search,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
+  }, [location.pathname, location.search]);
+
   return null;
 };
 
 const ServicesHub: React.FC = () => (
   <div className="min-h-screen bg-cream py-16">
     <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-12 text-black">Our Services</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map(s => (
-                <div key={s.id} className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col">
-                    <h2 className="text-2xl font-bold mb-4 text-black">{s.title}</h2>
-                    <p className="text-gray-600 mb-6 flex-grow">{s.description}</p>
-                    <Link to={s.path} className="text-primary font-bold hover:text-sky-800 flex items-center gap-2 self-start">
-                      View Details <ArrowRight className="w-4 h-4" />
-                    </Link>
-                </div>
-            ))}
-        </div>
+      <h1 className="text-4xl font-bold text-center mb-12 text-black">Our Services</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {SERVICES.map(s => (
+          <div
+            key={s.id}
+            className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+          >
+            <h2 className="text-2xl font-bold mb-4 text-black">{s.title}</h2>
+            <p className="text-gray-600 mb-6 flex-grow">{s.description}</p>
+            <Link
+              to={s.path}
+              className="text-primary font-bold hover:text-sky-800 flex items-center gap-2 self-start"
+            >
+              View Details <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 );
@@ -57,22 +76,20 @@ const App: React.FC = () => {
       <div className="min-h-screen flex flex-col font-sans">
         <ScrollToTop />
         <Header />
-        
+
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            
+
             {/* Service Routes */}
             <Route path="/services" element={<ServicesHub />} />
-            {/* Dynamic matching for service details */}
             <Route path="/services/:id" element={<ServicePage />} />
-            
+
             <Route path="/projects" element={<Projects />} />
-            
+
             <Route path="/service-areas" element={<ServiceAreasHub />} />
-            {/* Catch-all for specific service areas pointing to Hub for now, or could make dynamic area pages */}
             <Route path="/service-areas/:area" element={<ServiceAreasHub />} />
-            
+
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
