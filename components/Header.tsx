@@ -30,9 +30,9 @@ const Header: React.FC = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" onClick={closeMenu}>
-            <img 
-              src="/public/image_11.png"
-              alt={`${BUSINESS_INFO.name} Logo`} 
+            <img
+              src="/image_11.png"
+              alt={`${BUSINESS_INFO.name} Logo`}
               className="h-12 w-auto object-contain"
             />
             <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden sm:block">
@@ -46,9 +46,8 @@ const Header: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-medium transition-colors ${
-                  isActive(link.path) ? 'text-primary font-bold' : 'text-gray-600 hover:text-primary'
-                }`}
+                className={`text-sm font-medium transition-colors ${isActive(link.path) ? 'text-primary font-bold' : 'text-gray-600 hover:text-primary'
+                  }`}
               >
                 {link.name}
               </Link>
@@ -87,18 +86,17 @@ const Header: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={closeMenu}
-                className={`block px-3 py-3 rounded-md text-base font-medium ${
-                  isActive(link.path) 
-                    ? 'bg-sky-50 text-primary' 
+                className={`block px-3 py-3 rounded-md text-base font-medium ${isActive(link.path)
+                    ? 'bg-sky-50 text-primary'
                     : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
-                }`}
+                  }`}
               >
                 {link.name}
               </Link>
             ))}
             <div className="mt-4 pt-4 border-t border-gray-100">
-               <a 
-                href={`tel:+1${BUSINESS_INFO.phoneClean}`} 
+              <a
+                href={`tel:+1${BUSINESS_INFO.phoneClean}`}
                 className="flex items-center gap-3 px-3 py-3 text-gray-800 font-semibold"
               >
                 <Phone className="w-5 h-5 text-primary" />
