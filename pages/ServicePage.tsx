@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import { CheckCircle, HelpCircle, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 import ContactForm from '../components/ContactForm';
 
 const ServicePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  
+
   // Find service based on URL path logic in App.tsx routing
   // Note: The routing in App.tsx maps paths like /services/pool-cages-rescreens to this component
   // We need to match the data.
@@ -18,12 +19,26 @@ const ServicePage: React.FC = () => {
 
   return (
     <div className="flex flex-col">
+      <SEO
+        title={`${service.title} in Florida`}
+        description={`${service.title}: ${service.description} Serving Tampa, Orlando, and more. 10+ Years Experience.`}
+        canonical={service.path}
+        schema={{
+          "@type": "Service",
+          "serviceType": service.title,
+          "provider": {
+            "@type": "HomeAndConstructionBusiness",
+            "name": "Loaiza5 Aluminum LLC"
+          },
+          "areaServed": "Florida"
+        }}
+      />
       {/* Service Hero */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white">
         <div className="absolute inset-0">
-          <img 
-            src={service.details.heroImage} 
-            alt={service.title} 
+          <img
+            src={service.details.heroImage}
+            alt={service.title}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60"></div>
@@ -36,10 +51,10 @@ const ServicePage: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-          
+
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-16">
-            
+
             {/* What We Do */}
             <section>
               <h2 className="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">What We Do</h2>
@@ -104,7 +119,7 @@ const ServicePage: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="sticky top-24">
               <ContactForm />
-              
+
               <div className="mt-8 bg-secondary p-6 rounded-xl text-white">
                 <h3 className="text-xl font-bold mb-4">Other Services</h3>
                 <ul className="space-y-3">
@@ -123,7 +138,7 @@ const ServicePage: React.FC = () => {
 
         </div>
       </div>
-      
+
       {/* Bottom CTA */}
       <section className="bg-cream py-16 text-center">
         <div className="max-w-4xl mx-auto px-4">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICES, BUSINESS_INFO } from '../constants';
+import SEO from '../components/SEO';
+import { SERVICES, BUSINESS_INFO, TESTIMONIALS } from '../constants';
 import {
   Check,
   ShieldCheck,
@@ -10,55 +11,8 @@ import {
   Phone,
   Star,
   Quote,
-  LayoutGrid,
-  Hammer,
-  Home as HomeIcon,
-  Umbrella,
-  Sun,
   HelpCircle
 } from 'lucide-react';
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  LayoutGrid,
-  Hammer,
-  Home: HomeIcon,
-  Umbrella,
-  Sun,
-  HelpCircle
-};
-
-const TESTIMONIALS = [
-  {
-    id: 1,
-    text: "Loaiza5 Aluminum did an incredible job on our new pool cage. The team was professional, punctual, and the quality is outstanding. Highly recommended!",
-    author: "Sarah Jenkins",
-    location: "Tampa, FL"
-  },
-  {
-    id: 2,
-    text: "We needed a full rescreen after the hurricane season and they got it done quickly. Fair pricing compared to other quotes we received and excellent communication throughout the process.",
-    author: "Michael Ross",
-    location: "Orlando, FL"
-  },
-  {
-    id: 3,
-    text: "Absolutely love our new glass room! It has added so much value to our home and is now our favorite spot to relax. The craftsmanship is top-notch.",
-    author: "Elena Rodriguez",
-    location: "Sarasota, FL"
-  },
-  {
-    id: 4,
-    text: "Great experience from the initial quote to the final installation. The crew was respectful of our property and left the yard spotless. Very happy with our screen porch.",
-    author: "David Miller",
-    location: "Clearwater, FL"
-  },
-  {
-    id: 5,
-    text: "Professional, reliable, and skilled. They replaced a damaged beam structure that others said couldn't be fixed without a full tear down. Saved us thousands!",
-    author: "James Peterson",
-    location: "Fort Myers, FL"
-  }
-];
 
 const Home: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -72,6 +26,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col">
+      <SEO
+        title="Best Pool Cages & Screen Enclosures in Florida"
+        description="Premium aluminum services: Pool Cages, Rescreens, Glass Rooms, and Lanais. Serving Tampa, Orlando, and all of FL. Get a free quote today!"
+        canonical="/"
+      />
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -162,7 +121,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SERVICES.map((service) => {
               // Dynamically get icon
-              const IconComponent = ICON_MAP[service.iconName] || HelpCircle;
+              const IconComponent = service.icon || HelpCircle;
 
               return (
                 <Link

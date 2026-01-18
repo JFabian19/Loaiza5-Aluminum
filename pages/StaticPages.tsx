@@ -2,18 +2,24 @@ import React from 'react';
 import { BUSINESS_INFO, SERVICE_AREAS } from '../constants';
 import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export const About: React.FC = () => (
   <div className="py-16 bg-cream min-h-screen">
+    <SEO
+      title="About Us - Loaiza5 Aluminum LLC"
+      description="Family-owned aluminum construction company with 10+ years of experience serving Florida homeowners."
+      canonical="/about"
+    />
     <div className="max-w-4xl mx-auto px-4">
       <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">About Loaiza5 Aluminum LLC</h1>
       <div className="bg-white p-8 md:p-12 rounded-xl shadow-sm space-y-6 text-gray-700 leading-relaxed">
         <p className="text-lg">
-          For over 10 years, <strong>{BUSINESS_INFO.name}</strong> has been providing top-tier aluminum construction services across the state of Florida. 
+          For over 10 years, <strong>{BUSINESS_INFO.name}</strong> has been providing top-tier aluminum construction services across the state of Florida.
           As a family-owned and operated business, we treat every home as if it were our own.
         </p>
         <p>
-          We specialize in designing and building durable, high-quality pool cages, screen rooms, and lanais that withstand the harsh Florida climate. 
+          We specialize in designing and building durable, high-quality pool cages, screen rooms, and lanais that withstand the harsh Florida climate.
           Our mission is to help homeowners reclaim their outdoor spaces from bugs, debris, and intense sun, allowing you to enjoy the beautiful weather year-round.
         </p>
         <h2 className="text-2xl font-bold text-primary mt-8">Our Core Values</h2>
@@ -29,6 +35,11 @@ export const About: React.FC = () => (
 
 export const ServiceAreasHub: React.FC = () => (
   <div className="py-16 bg-white min-h-screen">
+    <SEO
+      title="Service Areas - Florida Aluminum Experts"
+      description="We serve all of Florida including Tampa, Orlando, Miami, Sarasota, and Jacksonville. Call us for local service."
+      canonical="/service-areas"
+    />
     <div className="max-w-7xl mx-auto px-4 text-center mb-12">
       <h1 className="text-4xl font-bold text-gray-900 mb-4">Areas We Serve</h1>
       <p className="text-lg text-gray-600">Proudly serving homeowners throughout the entire state of Florida.</p>

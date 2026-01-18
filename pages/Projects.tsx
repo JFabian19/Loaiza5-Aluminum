@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PROJECTS, SERVICES } from '../constants';
 import { MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const Projects: React.FC = () => {
   const [filter, setFilter] = useState('all');
@@ -11,12 +12,17 @@ const Projects: React.FC = () => {
     ...SERVICES.map(s => ({ id: s.id, name: s.title }))
   ];
 
-  const filteredProjects = filter === 'all' 
-    ? PROJECTS 
+  const filteredProjects = filter === 'all'
+    ? PROJECTS
     : PROJECTS.filter(p => p.category === filter);
 
   return (
     <div className="min-h-screen bg-cream">
+      <SEO
+        title="Our Projects Gallery | Aluminum Work in FL"
+        description="See our recent work: Pool Cages, Glass Rooms, Screen Enclosures and more. High quality aluminum construction across Florida."
+        canonical="/projects"
+      />
       {/* Header */}
       <div className="bg-secondary text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -32,11 +38,10 @@ const Projects: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                filter === cat.id 
-                  ? 'bg-primary text-white shadow-md' 
-                  : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
-              }`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === cat.id
+                ? 'bg-primary text-white shadow-md'
+                : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+                }`}
             >
               {cat.name}
             </button>
@@ -48,9 +53,9 @@ const Projects: React.FC = () => {
           {filteredProjects.map((project) => (
             <div key={project.id} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
               <div className="h-64 overflow-hidden">
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title} 
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>

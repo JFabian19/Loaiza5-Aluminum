@@ -1,9 +1,11 @@
+import React from 'react';
+
 export interface ServiceRoute {
   id: string;
   title: string;
   path: string;
   description: string;
-  iconName: 'LayoutGrid' | 'Hammer' | 'Home' | 'Umbrella' | 'Sun';
+  icon: React.ElementType;
   details: {
     heroImage: string;
     whatWeDo: string[];

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://loaiza5aluminum.online/sitemap.xml
