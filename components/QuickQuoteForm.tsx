@@ -112,11 +112,15 @@ const QuickQuoteForm: React.FC = () => {
                 </div>
 
                 <div>
-                    <label htmlFor="hero-message" className="block text-sm font-semibold text-gray-700 mb-1">Description</label>
+                    <div className="flex justify-between items-center mb-1">
+                        <label htmlFor="hero-message" className="text-sm font-semibold text-gray-700">Description</label>
+                        <span className="text-xs text-gray-400">{formData.message.length}/500</span>
+                    </div>
                     <textarea
                         id="hero-message"
                         name="message"
                         rows={2}
+                        maxLength={500}
                         value={formData.message}
                         onChange={handleChange}
                         className="w-full px-4 py-2 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all resize-none text-gray-900"
