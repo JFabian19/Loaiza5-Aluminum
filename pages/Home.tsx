@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { SERVICES, BUSINESS_INFO, TESTIMONIALS } from '../constants';
+import { SERVICES, BUSINESS_INFO, TESTIMONIALS, DOMAIN } from '../constants';
 import {
   Check,
   ShieldCheck,
@@ -14,6 +15,8 @@ import {
   HelpCircle
 } from 'lucide-react';
 
+import QuickQuoteForm from '../components/QuickQuoteForm';
+
 const Home: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -24,6 +27,13 @@ const Home: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": BUSINESS_INFO.name,
+    "url": DOMAIN
+  };
+
   return (
     <div className="flex flex-col">
       <SEO
@@ -31,8 +41,13 @@ const Home: React.FC = () => {
         description="Premium aluminum services: Pool Cages, Rescreens, Glass Rooms, and Lanais. Serving Tampa, Orlando, and all of FL. Get a free quote today!"
         canonical="/"
       />
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(webSiteSchema)}
+        </script>
+      </Helmet>
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center text-white overflow-hidden">
+      <section className="relative min-h-[700px] flex items-center text-white overflow-hidden py-16 md:py-0">
         <div className="absolute inset-0 z-0">
           <img
             src="/image_0.jpg"
@@ -42,41 +57,63 @@ const Home: React.FC = () => {
             // @ts-ignore
             fetchpriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left w-full">
-          <div className="md:w-2/3 lg:w-1/2 space-y-6">
-            <div className="flex flex-col md:items-start items-center gap-3 mb-2">
-              <div className="inline-block bg-accent/90 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
-                Serving All of Florida
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+            {/* Left Content */}
+            <div className="space-y-6 text-center md:text-left">
+              <div className="flex flex-col md:items-start items-center gap-3 mb-2">
+                <div className="inline-block bg-accent/90 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
+                  Serving All of Florida
+                </div>
+                <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase animate-pulse shadow-lg">
+                  🎉 New Customer Special: 10% Off!
+                </div>
               </div>
-              <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase animate-pulse shadow-lg">
-                🎉 New Customer Special: 10% Off when you mention this website!
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
+                Premium Pool Cages & <span className="text-accent">Screen Enclosures</span>
+              </h1>
+              <p className="text-lg md:text-xl text-gray-100 font-medium drop-shadow-md max-w-xl mx-auto md:mx-0">
+                Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 10 years of experience.
+              </p>
+
+              <div className="hidden md:flex flex-wrap gap-4 pt-4">
+                <Link
+                  to="/contact"
+                  className="bg-white hover:bg-gray-100 text-primary text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
+                >
+                  More Details
+                </Link>
+                <a
+                  href={`tel:+1${BUSINESS_INFO.phoneClean}`}
+                  className="bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  {BUSINESS_INFO.phone}
+                </a>
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Premium Pool Cages & <span className="text-accent">Screen Enclosures</span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200">
-              Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 10 years of experience.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link
-                to="/contact"
-                className="bg-primary hover:bg-sky-700 text-white text-lg font-bold py-4 px-8 rounded-lg shadow-xl transition-transform hover:scale-105 text-center"
-              >
-                Request Free Quote
-              </Link>
+            {/* Right Content - Form */}
+            <div className="flex justify-center md:justify-end w-full">
+              <QuickQuoteForm />
+            </div>
+
+            {/* Mobile Only Buttons (below form) */}
+            <div className="md:hidden flex flex-col gap-4 w-full">
               <a
                 href={`tel:+1${BUSINESS_INFO.phoneClean}`}
-                className="bg-white hover:bg-gray-100 text-primary text-lg font-bold py-4 px-8 rounded-lg shadow-xl transition-colors flex items-center justify-center gap-2"
+                className="w-full bg-white text-primary font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
-                {BUSINESS_INFO.phone}
+                Call Now
               </a>
             </div>
+
           </div>
         </div>
       </section>

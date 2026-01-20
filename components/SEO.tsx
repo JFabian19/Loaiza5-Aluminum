@@ -12,6 +12,8 @@ interface SEOProps {
 
 const DOMAIN = 'https://loaiza5aluminum.online';
 
+import { Helmet } from 'react-helmet-async';
+
 const SEO: React.FC<SEOProps> = ({
     title,
     description,
@@ -66,7 +68,7 @@ const SEO: React.FC<SEOProps> = ({
     const jsonLd = schema ? { ...defaultSchema, ...schema } : defaultSchema;
 
     return (
-        <>
+        <Helmet>
             {/* Standard Metadata */}
             <title>{fullTitle}</title>
             <meta name="description" content={description} />
@@ -90,7 +92,7 @@ const SEO: React.FC<SEOProps> = ({
             <script type="application/ld+json">
                 {JSON.stringify(jsonLd)}
             </script>
-        </>
+        </Helmet>
     );
 };
 

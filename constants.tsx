@@ -11,6 +11,9 @@ export const BUSINESS_INFO = {
   experience: "10+ Years",
 };
 
+export const DOMAIN = 'https://loaiza5aluminum.online';
+
+
 export const SERVICES: ServiceRoute[] = [
   {
     id: 'pool-cages',

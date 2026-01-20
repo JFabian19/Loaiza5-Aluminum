@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
-import { BUSINESS_INFO } from '../constants';
+import { Helmet } from 'react-helmet-async';
+import { BUSINESS_INFO, DOMAIN } from '../constants';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,15 @@ const Header: React.FC = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  const navigationSchema = {
+    "@context": "https://schema.org",
+    "@graph": navLinks.map(link => ({
+      "@type": "SiteNavigationElement",
+      "name": link.name,
+      "url": `${DOMAIN}${link.path}`
+    }))
+  };
+
   const isActive = (path: string) => {
     if (path === '/' && location.pathname !== '/') return false;
     return location.pathname.startsWith(path);
@@ -26,6 +36,11 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 w-full z-40 bg-white shadow-md">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(navigationSchema)}
+        </script>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -33,9 +48,9 @@ const Header: React.FC = () => {
             <img
               src="/image_11.png"
               alt={`${BUSINESS_INFO.name} Logo`}
-              className="h-12 w-auto object-contain"
+              className="h-10 md:h-12 w-auto object-contain"
             />
-            <span className="font-bold text-gray-900 text-lg md:text-xl tracking-tight hidden sm:block">
+            <span className="font-bold text-gray-900 text-sm sm:text-lg md:text-xl tracking-tight leading-tight">
               {BUSINESS_INFO.name}
             </span>
           </Link>
@@ -87,8 +102,8 @@ const Header: React.FC = () => {
                 to={link.path}
                 onClick={closeMenu}
                 className={`block px-3 py-3 rounded-md text-base font-medium ${isActive(link.path)
-                    ? 'bg-sky-50 text-primary'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                  ? 'bg-sky-50 text-primary'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
                   }`}
               >
                 {link.name}
