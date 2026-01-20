@@ -89,7 +89,7 @@ const Home: React.FC = () => {
                   More Details
                 </Link>
                 <a
-                  href={`tel:+1${BUSINESS_INFO.phoneClean}`}
+                  href={`tel:+${BUSINESS_INFO.phoneClean}`}
                   className="bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
@@ -106,7 +106,7 @@ const Home: React.FC = () => {
             {/* Mobile Only Buttons (below form) */}
             <div className="md:hidden flex flex-col gap-4 w-full">
               <a
-                href={`tel:+1${BUSINESS_INFO.phoneClean}`}
+                href={`tel:+${BUSINESS_INFO.phoneClean}`}
                 className="w-full bg-white text-primary font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
@@ -324,7 +324,7 @@ const Home: React.FC = () => {
               Get Started
             </Link>
             <a
-              href={`tel:+1${BUSINESS_INFO.phoneClean}`}
+              href={`tel:+${BUSINESS_INFO.phoneClean}`}
               className="bg-sky-700 text-white border border-sky-600 text-lg font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-sky-800 transition-colors"
             >
               Call {BUSINESS_INFO.phone}

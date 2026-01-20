@@ -10,14 +10,14 @@ const Footer: React.FC = () => {
     <footer className="bg-secondary text-gray-300 pt-16 pb-24 md:pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          
+
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-4">
-              <img 
-                src="/image_11.png" 
-                alt={`${BUSINESS_INFO.name} Logo`} 
-                className="h-10 w-auto object-contain bg-white/10 rounded px-1" 
+              <img
+                src="/image_11.png"
+                alt={`${BUSINESS_INFO.name} Logo`}
+                className="h-10 w-auto object-contain bg-white/10 rounded px-1"
               />
               <span className="text-white font-bold text-lg">{BUSINESS_INFO.name}</span>
             </div>
@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
               Your trusted partner for aluminum structures in Florida. Quality materials, clear communication, and over {BUSINESS_INFO.experience} of experience.
             </p>
             <div className="space-y-2 pt-2">
-               <a href={`tel:+1${BUSINESS_INFO.phoneClean}`} className="flex items-center gap-3 hover:text-white transition-colors">
+              <a href={`tel:+${BUSINESS_INFO.phoneClean}`} className="flex items-center gap-3 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-accent" />
                 {BUSINESS_INFO.phone}
               </a>

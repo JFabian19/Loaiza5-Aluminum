@@ -69,9 +69,8 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Desktop Call/CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <a href={`tel:+1${BUSINESS_INFO.phoneClean}`} className="flex items-center gap-2 text-primary font-semibold hover:text-accent">
+            <a href={`tel:+${BUSINESS_INFO.phoneClean}`} className="flex items-center gap-2 text-primary font-semibold hover:text-accent">
               <Phone className="w-4 h-4" />
               {BUSINESS_INFO.phone}
             </a>
@@ -111,7 +110,7 @@ const Header: React.FC = () => {
             ))}
             <div className="mt-4 pt-4 border-t border-gray-100">
               <a
-                href={`tel:+1${BUSINESS_INFO.phoneClean}`}
+                href={`tel:+${BUSINESS_INFO.phoneClean}`}
                 className="flex items-center gap-3 px-3 py-3 text-gray-800 font-semibold"
               >
                 <Phone className="w-5 h-5 text-primary" />
