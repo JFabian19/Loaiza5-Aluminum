@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { SERVICES, BUSINESS_INFO, TESTIMONIALS, DOMAIN } from '../constants';
+import { IMAGES } from '../images';
 import {
   Check,
   ShieldCheck,
@@ -50,7 +51,7 @@ const Home: React.FC = () => {
       <section className="relative min-h-[700px] flex items-center text-white overflow-hidden py-16 md:py-0">
         <div className="absolute inset-0 z-0">
           <img
-            src="/image_0.jpg"
+            src={IMAGES.MAIN_HERO}
             alt="Beautiful Florida Pool Enclosure"
             className="w-full h-full object-cover object-center"
             loading="eager"
@@ -230,7 +231,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <img src="/image_4.jpg" alt="Loaiza5 Professional Installation" className="w-full h-full object-cover" loading="lazy" />
+              <img src={IMAGES.PROJECTS.STORM_REPAIR} alt="Loaiza5 Professional Installation" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
         </div>

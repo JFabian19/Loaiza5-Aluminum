@@ -13,12 +13,13 @@ interface SEOProps {
 const DOMAIN = 'https://loaiza5aluminum.online';
 
 import { Helmet } from 'react-helmet-async';
+import { IMAGES } from '../images';
 
 const SEO: React.FC<SEOProps> = ({
     title,
     description,
     canonical,
-    image = '/image_0.jpg',
+    image = IMAGES.MAIN_HERO, // Default image
     type = 'website',
     schema
 }) => {
@@ -31,7 +32,7 @@ const SEO: React.FC<SEOProps> = ({
         "@context": "https://schema.org",
         "@type": "HomeAndConstructionBusiness",
         "name": BUSINESS_INFO.name,
-        "image": `${DOMAIN}/image_0.jpg`,
+        "image": `${DOMAIN}${IMAGES.MAIN_HERO}`,
         "@id": DOMAIN,
         "url": DOMAIN,
         "telephone": BUSINESS_INFO.phone,

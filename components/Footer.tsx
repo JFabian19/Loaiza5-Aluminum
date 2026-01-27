@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { BUSINESS_INFO, SERVICES, SERVICE_AREAS } from '../constants';
+import { IMAGES } from '../images';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -15,7 +16,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center gap-2 mb-4">
               <img
-                src="/image_11.png"
+                src={IMAGES.LOGO}
                 alt={`${BUSINESS_INFO.name} Logo`}
                 className="h-10 w-auto object-contain bg-white/10 rounded px-1"
               />

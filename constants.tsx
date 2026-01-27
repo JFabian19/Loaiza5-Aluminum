@@ -1,6 +1,7 @@
 import React from 'react';
 import { ServiceRoute, Project, ServiceArea } from './types';
 import { LayoutGrid, Hammer, Home, Umbrella, Sun } from 'lucide-react';
+import { IMAGES } from './images';
 
 export const BUSINESS_INFO = {
   name: "Loaiza5 Aluminum LLC",
@@ -9,9 +10,11 @@ export const BUSINESS_INFO = {
   email: "loaiza5aluminum@gmail.com",
   location: "Serving all of Florida",
   experience: "10+ Years",
+  logo: IMAGES.LOGO,
 };
 
 export const DOMAIN = 'https://loaiza5aluminum.online';
+
 
 
 export const SERVICES: ServiceRoute[] = [
@@ -22,7 +25,7 @@ export const SERVICES: ServiceRoute[] = [
     description: "Complete pool enclosure installations and full rescreening services to keep your pool area bug-free.",
     icon: LayoutGrid,
     details: {
-      heroImage: "/image_10.jpg",
+      heroImage: IMAGES.SERVICES.POOL_CAGES,
       whatWeDo: [
         "New Pool Cage Installation",
         "Full Enclosure Rescreening",
@@ -54,7 +57,7 @@ export const SERVICES: ServiceRoute[] = [
     description: "Expert repairs for storm damage and safe demolition of old structures.",
     icon: Hammer,
     details: {
-      heroImage: "/image_4.jpg",
+      heroImage: IMAGES.SERVICES.REPAIRS,
       whatWeDo: [
         "Structural Aluminum Repairs",
         "Storm Damage Restoration",
@@ -85,7 +88,7 @@ export const SERVICES: ServiceRoute[] = [
     description: "Convert your outdoor space into a year-round room with glass or high-quality screen.",
     icon: Home,
     details: {
-      heroImage: "/image_3.jpg",
+      heroImage: IMAGES.SERVICES.GLASS_ROOMS,
       whatWeDo: [
         "Custom Glass Rooms",
         "Elite Screen Rooms",
@@ -116,7 +119,7 @@ export const SERVICES: ServiceRoute[] = [
     description: "Protect your vehicles and patio areas with durable aluminum structures.",
     icon: Umbrella,
     details: {
-      heroImage: "/image_1.jpg",
+      heroImage: IMAGES.SERVICES.LANAIS,
       whatWeDo: [
         "Aluminum Carports",
         "Lanai Enclosures",
@@ -147,7 +150,7 @@ export const SERVICES: ServiceRoute[] = [
     description: "Enjoy the Florida breeze without the bugs on your front or back porch.",
     icon: Sun,
     details: {
-      heroImage: "/image_7.jpg",
+      heroImage: IMAGES.SERVICES.PORCHES,
       whatWeDo: [
         "Front Porch Screening",
         "Back Patio Enclosures",
@@ -182,12 +185,12 @@ export const SERVICE_AREAS: ServiceArea[] = [
 ];
 
 export const PROJECTS: Project[] = [
-  { id: 1, title: "Modern Pool Cage", category: "pool-cages", location: "Tampa, FL", imageUrl: "/image_9.jpg", description: "Mansard roof style cage with picture window view." },
-  { id: 2, title: "Full Rescreen", category: "rescreens", location: "Orlando, FL", imageUrl: "/image_10.jpg", description: "Complete restoration using 20/20 mesh for tiny bug protection." },
-  { id: 3, title: "White Glass Room", category: "glass-rooms", location: "Sarasota, FL", imageUrl: "/image_2.jpg", description: "Sunroom addition with sliding glass windows." },
-  { id: 4, title: "Storm Repair", category: "repairs", location: "Fort Myers, FL", imageUrl: "/image_4.jpg", description: "Structural beam replacement after storm damage." },
-  { id: 5, title: "Double Carport", category: "lanais", location: "Lakeland, FL", imageUrl: "/image_6.jpg", description: "Attached aluminum carport protecting two vehicles." },
-  { id: 6, title: "Front Porch Enclosure", category: "porches", location: "Jacksonville, FL", imageUrl: "/image_5.jpg", description: "Bronze frame front entry screen." },
+  { id: 1, title: "Modern Pool Cage", category: "pool-cages", location: "Tampa, FL", imageUrl: IMAGES.PROJECTS.MODERN_POOL_CAGE, description: "Mansard roof style cage with picture window view." },
+  { id: 2, title: "Full Rescreen", category: "rescreens", location: "Orlando, FL", imageUrl: IMAGES.PROJECTS.FULL_RESCREEN, description: "Complete restoration using 20/20 mesh for tiny bug protection." },
+  { id: 3, title: "White Glass Room", category: "glass-rooms", location: "Sarasota, FL", imageUrl: IMAGES.PROJECTS.WHITE_GLASS_ROOM, description: "Sunroom addition with sliding glass windows." },
+  { id: 4, title: "Storm Repair", category: "repairs", location: "Fort Myers, FL", imageUrl: IMAGES.PROJECTS.STORM_REPAIR, description: "Structural beam replacement after storm damage." },
+  { id: 5, title: "Double Carport", category: "lanais", location: "Lakeland, FL", imageUrl: IMAGES.PROJECTS.DOUBLE_CARPORT, description: "Attached aluminum carport protecting two vehicles." },
+  { id: 6, title: "Front Porch Enclosure", category: "porches", location: "Jacksonville, FL", imageUrl: IMAGES.PROJECTS.FRONT_PORCH, description: "Bronze frame front entry screen." },
 ];
 
 export const TESTIMONIALS = [

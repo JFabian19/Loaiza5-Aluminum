@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, DOMAIN } from '../constants';
+import { IMAGES } from '../images';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group" onClick={closeMenu}>
             <img
-              src="/image_11.png"
+              src={IMAGES.LOGO}
               alt={`${BUSINESS_INFO.name} Logo`}
               className="h-10 md:h-12 w-auto object-contain"
             />
