@@ -50,14 +50,17 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative min-h-[700px] flex items-center text-white overflow-hidden py-16 md:py-0">
         <div className="absolute inset-0 z-0">
-          <img
-            src={IMAGES.MAIN_HERO}
-            alt="Beautiful Florida Pool Enclosure"
-            className="w-full h-full object-cover object-center"
-            loading="eager"
-            // @ts-ignore
-            fetchpriority="high"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet={IMAGES.MAIN_HERO_MOBILE} />
+            <img
+              src={IMAGES.MAIN_HERO}
+              alt="Beautiful Florida Pool Enclosure"
+              className="w-full h-full object-cover object-center"
+              loading="eager"
+              // @ts-ignore
+              fetchpriority="high"
+            />
+          </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
         </div>
 

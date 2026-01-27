@@ -15,6 +15,7 @@ export const IMAGES = {
     LOGO: "/logo.webp",
     FAVICON: "/favicon.png",
     MAIN_HERO: "/hero_main.webp",
+    MAIN_HERO_MOBILE: "/hero_main_mobile.webp",
 
     // Service Hero Images
     SERVICES: {
