@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
           <p>&copy; {currentYear} {BUSINESS_INFO.name}. All rights reserved.</p>
           <p>
             Made by{' '}
-            <a href="https://tymasolution.lat" target="_blank" rel="noopener noreferrer" className="font-bold tracking-wide hover:opacity-80 transition-opacity">
+            <a href="https://tymasolutions.lat" target="_blank" rel="noopener noreferrer" className="font-bold tracking-wide hover:opacity-80 transition-opacity">
               <span className="text-sky-400">tyma</span>
               <span className="text-white">solutions</span>
             </a>
