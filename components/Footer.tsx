@@ -82,8 +82,15 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-500">
+        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col items-center justify-center text-center text-sm text-gray-500 gap-2">
           <p>&copy; {currentYear} {BUSINESS_INFO.name}. All rights reserved.</p>
+          <p>
+            Made by{' '}
+            <a href="https://tymasolution.lat" target="_blank" rel="noopener noreferrer" className="font-bold tracking-wide hover:opacity-80 transition-opacity">
+              <span className="text-sky-400">tyma</span>
+              <span className="text-white">solutions</span>
+            </a>
+          </p>
         </div>
       </div>
     </footer>

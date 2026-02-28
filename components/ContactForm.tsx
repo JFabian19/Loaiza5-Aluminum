@@ -28,7 +28,7 @@ const ContactForm: React.FC = () => {
     if (!formData.city.trim()) newErrors.city = "Zip code or City is required";
     if (!formData.service) newErrors.service = "Please select a service";
     if (!formData.privacyAccepted) newErrors.privacyAccepted = "You must agree to the privacy policy";
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -58,7 +58,7 @@ const ContactForm: React.FC = () => {
         method: 'POST',
         body: dataToSend,
         // Importante: 'no-cors' permite enviar datos a Google sin que el navegador bloquee la respuesta
-        mode: 'no-cors' 
+        mode: 'no-cors'
       });
 
       // 3. Manejar el éxito
@@ -98,13 +98,16 @@ const ContactForm: React.FC = () => {
 
   if (status === 'success') {
     return (
-      <div className="bg-sky-50 p-8 rounded-lg text-center border border-sky-200">
-        <CheckCircle className="w-16 h-16 text-sky-600 mx-auto mb-4" />
-        <h3 className="text-2xl font-bold text-sky-800 mb-2">Message Sent!</h3>
-        <p className="text-sky-700">Thank you for contacting us. We will get back to you within 24 hours.</p>
-        <button 
+      <div className="bg-white p-12 rounded-xl text-center border border-gray-100 shadow-lg min-h-[450px] flex flex-col items-center justify-center">
+        <svg className="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+          <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" stroke="#fff" />
+        </svg>
+        <h3 className="text-3xl font-bold text-gray-900 mb-3">Form Submitted!</h3>
+        <p className="text-gray-600 text-lg font-medium">We will call you as soon as possible.</p>
+        <button
           onClick={() => setStatus('idle')}
-          className="mt-6 text-sky-800 font-semibold underline"
+          className="mt-8 text-primary font-semibold underline hover:text-sky-700 transition-colors"
         >
           Send another message
         </button>
@@ -115,14 +118,14 @@ const ContactForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100">
       <h3 className="text-2xl font-bold text-primary mb-6">Get Your Free Quote</h3>
-      
+
       {/* Honeypot field - hidden */}
-      <input 
-        type="text" 
-        name="honeypot" 
-        value={formData.honeypot} 
-        onChange={handleChange} 
-        className="hidden" 
+      <input
+        type="text"
+        name="honeypot"
+        value={formData.honeypot}
+        onChange={handleChange}
+        className="hidden"
         autoComplete="off"
       />
 
@@ -137,7 +140,7 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
           />
-          {errors.name && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3"/> {errors.name}</p>}
+          {errors.name && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.name}</p>}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -151,7 +154,7 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${errors.phone ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
             />
-            {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3"/> {errors.phone}</p>}
+            {errors.phone && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.phone}</p>}
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email (Optional)</label>
@@ -177,7 +180,7 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               className={`w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all ${errors.city ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
             />
-            {errors.city && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3"/> {errors.city}</p>}
+            {errors.city && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.city}</p>}
           </div>
           <div>
             <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">Service Needed *</label>
@@ -192,7 +195,7 @@ const ContactForm: React.FC = () => {
               {SERVICES.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
               <option value="Other">Other / Not Sure</option>
             </select>
-            {errors.service && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3"/> {errors.service}</p>}
+            {errors.service && <p className="text-red-500 text-xs mt-1 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.service}</p>}
           </div>
         </div>
 
@@ -210,19 +213,19 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div className="flex items-start gap-3">
-            <input 
-                type="checkbox" 
-                id="privacy" 
-                name="privacyAccepted"
-                checked={formData.privacyAccepted}
-                onChange={handleCheckbox}
-                className="mt-1 w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
-            />
-            <label htmlFor="privacy" className="text-xs text-gray-600">
-                I agree to the privacy policy and consent to being contacted by phone or email regarding my inquiry.
-            </label>
+          <input
+            type="checkbox"
+            id="privacy"
+            name="privacyAccepted"
+            checked={formData.privacyAccepted}
+            onChange={handleCheckbox}
+            className="mt-1 w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded"
+          />
+          <label htmlFor="privacy" className="text-xs text-gray-600">
+            I agree to the privacy policy and consent to being contacted by phone or email regarding my inquiry.
+          </label>
         </div>
-        {errors.privacyAccepted && <p className="text-red-500 text-xs flex items-center gap-1"><AlertCircle className="w-3 h-3"/> {errors.privacyAccepted}</p>}
+        {errors.privacyAccepted && <p className="text-red-500 text-xs flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.privacyAccepted}</p>}
 
         <button
           type="submit"

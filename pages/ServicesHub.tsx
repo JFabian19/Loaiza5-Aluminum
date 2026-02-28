@@ -6,6 +6,11 @@ import { SERVICES } from '../constants';
 
 const ServicesHub: React.FC = () => (
     <div className="min-h-screen bg-cream py-16">
+        <SEO
+            title="Professional Aluminum Services in FL | Pool Cages & Enclosures"
+            description="Explore our range of premium aluminum services including Custom Pool Cages, Tear-Down repairs, Glass Rooms, Carports, and Porch Enclosures across Florida."
+            canonical="/services"
+        />
         <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl font-bold text-center mb-12 text-black">Our Services</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

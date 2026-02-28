@@ -45,10 +45,13 @@ const QuickQuoteForm: React.FC = () => {
 
     if (status === 'success') {
         return (
-            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-xl text-center border-t-4 border-accent animate-fadeIn">
-                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Quote Requested!</h3>
-                <p className="text-gray-600 mb-6">We'll obtain back to you shortly.</p>
+            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-xl text-center border-t-4 border-accent animate-fadeIn min-h-[400px] flex flex-col items-center justify-center max-w-md w-full mx-auto md:mx-0">
+                <svg className="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                    <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" stroke="#fff" />
+                </svg>
+                <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Form Submitted!</h3>
+                <p className="text-gray-600 mb-8 text-lg font-medium">We will call you as soon as possible.</p>
                 <button
                     onClick={() => setStatus('idle')}
                     className="text-primary font-semibold underline hover:text-accent transition-colors"

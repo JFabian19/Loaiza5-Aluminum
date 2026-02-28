@@ -38,8 +38,8 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col">
       <SEO
-        title="Best Pool Cages & Screen Enclosures in Florida"
-        description="Premium aluminum services: Pool Cages, Rescreens, Glass Rooms, and Lanais. Serving Tampa, Orlando, and all of FL. Get a free quote today!"
+        title="Best Pool Cages, Screen Enclosures & Aluminum Repairs in FL"
+        description="Premium custom aluminum services: Pool Cages, Screen Enclosures, Storm Repairs, Glass Rooms, and Lanais. Trusted experts in Tampa, Orlando, Miami and all FL."
         canonical="/"
       />
       <Helmet>
@@ -219,7 +219,7 @@ const Home: React.FC = () => {
                   { title: "Request a Quote", desc: "Fill out our form or call us to share your project details." },
                   { title: "Free Consultation", desc: "We visit your property, measure, and provide a clear estimate." },
                   { title: "Professional Installation", desc: "Our experienced team arrives on time and works efficiently." },
-                  { title: "Final Walkthrough", desc: "We ensure you are 100% satisfied with our work." }
+                  { title: "Final Walkthrough", desc: "We make sure you are 100% satisfied with our work." }
                 ].map((step, idx) => (
                   <div key={idx} className="flex gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">

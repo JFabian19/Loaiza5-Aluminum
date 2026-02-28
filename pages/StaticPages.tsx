@@ -7,8 +7,8 @@ import SEO from '../components/SEO';
 export const About: React.FC = () => (
   <div className="py-16 bg-cream min-h-screen">
     <SEO
-      title="About Us - Loaiza5 Aluminum LLC"
-      description="Family-owned aluminum construction company with 10+ years of experience serving Florida homeowners."
+      title="About Our Aluminum Experts | 10+ Years Experience"
+      description="Learn more about Loaiza5 Aluminum LLC. A family-owned, trusted aluminum construction company supplying Florida homeowners with durable pool cages and enclosures."
       canonical="/about"
     />
     <div className="max-w-4xl mx-auto px-4">
@@ -36,8 +36,8 @@ export const About: React.FC = () => (
 export const ServiceAreasHub: React.FC = () => (
   <div className="py-16 bg-white min-h-screen">
     <SEO
-      title="Service Areas - Florida Aluminum Experts"
-      description="We serve all of Florida including Tampa, Orlando, Miami, Sarasota, and Jacksonville. Call us for local service."
+      title="Service Areas | Tampa, Orlando, Miami & Southwest Florida"
+      description="Loaiza5 Aluminum LLC serves the entire state of Florida. From Tampa Bay to South Florida, count on us for professional pool cage and screen installations."
       canonical="/service-areas"
     />
     <div className="max-w-7xl mx-auto px-4 text-center mb-12">
