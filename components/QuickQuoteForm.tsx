@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 import { SERVICES } from '../constants';
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0iAnw8T5nKgyZEoBlcQhuprL5gvWPt7fn0jU5i4JIi5J5h8nGKF8mFpxBx31W9bo5/exec';
@@ -30,13 +30,17 @@ const QuickQuoteForm: React.FC = () => {
         dataToSend.append('created_at', new Date().toISOString());
 
         try {
-            await fetch(GOOGLE_SCRIPT_URL, {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                body: dataToSend,
-                mode: 'no-cors'
+                body: dataToSend
             });
-            setStatus('success');
-            setFormData({ name: '', phone: '', service: '', message: '' });
+
+            if (response.ok) {
+                setStatus('success');
+                setFormData({ name: '', phone: '', service: '', message: '' });
+            } else {
+                throw new Error('Network response was not ok');
+            }
         } catch (error) {
             console.error("Error submitting form", error);
             setStatus('error');
@@ -89,6 +93,8 @@ const QuickQuoteForm: React.FC = () => {
                     <input
                         required
                         type="tel"
+                        inputMode="tel"
+                        pattern="[0-9\-() ]*"
                         id="hero-phone"
                         name="phone"
                         value={formData.phone}
@@ -139,6 +145,10 @@ const QuickQuoteForm: React.FC = () => {
                     {status === 'submitting' ? 'Sending...' : 'Get Free Quote'}
                     {!status.includes('submit') && <Send className="w-4 h-4" />}
                 </button>
+
+                <p className="text-xs text-center text-gray-500 mt-2 flex items-center justify-center gap-1">
+                    <ShieldCheck className="w-4 h-4 text-green-600" /> 100% Free Estimate. Fast & Secure.
+                </p>
 
                 {status === 'error' && (
                     <p className="text-red-500 text-xs text-center flex items-center justify-center gap-1">

@@ -23,7 +23,7 @@ const SEO: React.FC<SEOProps> = ({
     type = 'website',
     schema
 }) => {
-    const fullTitle = `${title} | ${BUSINESS_INFO.name}`;
+    const fullTitle = title.length > 50 ? title : `${title} | ${BUSINESS_INFO.name}`;
     const fullUrl = canonical ? `${DOMAIN}${canonical}` : DOMAIN;
     const fullImage = image.startsWith('http') ? image : `${DOMAIN}${image}`;
 
@@ -66,7 +66,10 @@ const SEO: React.FC<SEOProps> = ({
         }
     };
 
-    const jsonLd = schema ? { ...defaultSchema, ...schema } : defaultSchema;
+    const jsonLd = schema ? {
+        "@context": "https://schema.org",
+        "@graph": [defaultSchema, schema]
+    } : defaultSchema;
 
     return (
         <Helmet>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SERVICES } from '../constants';
 import { ContactFormData } from '../types';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -53,13 +53,15 @@ const ContactForm: React.FC = () => {
     dataToSend.append('created_at', new Date().toISOString());
 
     try {
-      // 2. Realizar la petición fetch al script de Google
-      await fetch(GOOGLE_SCRIPT_URL, {
+      // 2. Realizar la petición fetch al script de Google sin no-cors
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        body: dataToSend,
-        // Importante: 'no-cors' permite enviar datos a Google sin que el navegador bloquee la respuesta
-        mode: 'no-cors'
+        body: dataToSend
       });
+
+      if (!response.ok) {
+        throw new Error('Script execution failed');
+      }
 
       // 3. Manejar el éxito
       console.log("Formulario enviado a Google Sheets");
@@ -148,6 +150,8 @@ const ContactForm: React.FC = () => {
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
             <input
               type="tel"
+              inputMode="tel"
+              pattern="[0-9\-() ]*"
               id="phone"
               name="phone"
               value={formData.phone}
@@ -227,14 +231,19 @@ const ContactForm: React.FC = () => {
         </div>
         {errors.privacyAccepted && <p className="text-red-500 text-xs flex items-center gap-1"><AlertCircle className="w-3 h-3" /> {errors.privacyAccepted}</p>}
 
-        <button
-          type="submit"
-          disabled={status === 'submitting'}
-          className="w-full bg-primary hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
-        >
-          {status === 'submitting' ? 'Sending...' : 'Request Free Quote'}
-          {!status.includes('submit') && <Send className="w-5 h-5" />}
-        </button>
+        <div className="pt-2">
+          <button
+            type="submit"
+            disabled={status === 'submitting'}
+            className="w-full bg-primary hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-md shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          >
+            {status === 'submitting' ? 'Sending...' : 'Request Free Quote'}
+            {!status.includes('submit') && <Send className="w-5 h-5" />}
+          </button>
+          <p className="text-xs text-center text-gray-500 mt-3 flex items-center justify-center gap-1">
+            <ShieldCheck className="w-4 h-4 text-green-600" /> 100% Free Estimate. Fast & Secure.
+          </p>
+        </div>
       </div>
     </form>
   );

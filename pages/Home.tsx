@@ -79,25 +79,36 @@ const Home: React.FC = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
-                Premium Pool Cages & <span className="text-accent">Screen Enclosures</span>
+                Premium Pool Cages & <span className="text-accent">Screen Enclosures in FL</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-100 font-medium drop-shadow-md max-w-xl mx-auto md:mx-0">
                 Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 10 years of experience.
               </p>
 
               <div className="hidden md:flex flex-wrap gap-4 pt-4">
-                <Link
-                  to="/contact"
-                  className="bg-white hover:bg-gray-100 text-primary text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
-                >
-                  More Details
-                </Link>
                 <a
                   href={`tel:+${BUSINESS_INFO.phoneClean}`}
-                  className="bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
+                  className="bg-yellow-500 hover:bg-yellow-400 text-black text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
                   {BUSINESS_INFO.phone}
+                </a>
+                <Link
+                  to="/contact"
+                  className="bg-transparent border-2 border-white hover:bg-white/10 text-white text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
+                >
+                  More Details
+                </Link>
+              </div>
+
+              {/* Mobile Only Buttons (below text context) */}
+              <div className="md:hidden flex flex-col gap-4 pt-6 w-full">
+                <a
+                  href={`tel:+${BUSINESS_INFO.phoneClean}`}
+                  className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Phone className="w-5 h-5" />
+                  Call Now
                 </a>
               </div>
             </div>
@@ -105,17 +116,6 @@ const Home: React.FC = () => {
             {/* Right Content - Form */}
             <div className="flex justify-center md:justify-end w-full">
               <QuickQuoteForm />
-            </div>
-
-            {/* Mobile Only Buttons (below form) */}
-            <div className="md:hidden flex flex-col gap-4 w-full">
-              <a
-                href={`tel:+${BUSINESS_INFO.phoneClean}`}
-                className="w-full bg-white text-primary font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
-              >
-                <Phone className="w-5 h-5" />
-                Call Now
-              </a>
             </div>
 
           </div>
@@ -155,7 +155,7 @@ const Home: React.FC = () => {
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Professional Services</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Custom Aluminum & Pool Enclosure Services</h2>
             <p className="text-lg text-gray-600">We specialize in custom aluminum solutions designed to enhance your home and withstand the elements.</p>
           </div>
 
@@ -211,7 +211,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Simple 4-Step Process</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Pool Cage Construction Process</h2>
               <p className="text-gray-600 mb-10 text-lg">We make improving your home easy and stress-free. Here is what you can expect when you work with Loaiza5 Aluminum.</p>
 
               <div className="space-y-8">
