@@ -75,9 +75,6 @@ const Header: React.FC = () => {
               Mon-Sat: 8:00 AM - 6:00 PM
             </div>
           </div>
-          <div>
-            <span className="font-semibold text-white tracking-wide">Licensed & Insured Florida Contractors</span>
-          </div>
         </div>
       </div>
 
