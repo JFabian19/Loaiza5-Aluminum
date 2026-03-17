@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 
 import QuickQuoteForm from '../components/QuickQuoteForm';
+import CountUp from '../components/CountUp';
 
 const Home: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -48,7 +49,7 @@ const Home: React.FC = () => {
         </script>
       </Helmet>
       {/* Hero Section */}
-      <section className="relative min-h-[700px] flex items-center text-white overflow-hidden py-16 md:py-0">
+      <section className="relative min-h-[700px] flex items-center text-white overflow-hidden pt-24 pb-12 md:pt-28 md:pb-0">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={IMAGES.MAIN_HERO_MOBILE} />
@@ -70,22 +71,22 @@ const Home: React.FC = () => {
             {/* Left Content */}
             <div className="space-y-6 text-center md:text-left">
               <div className="flex flex-col md:items-start items-center gap-3 mb-2">
-                <div className="inline-block bg-accent/90 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">
+                <div className="inline-block bg-accent/90 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase opacity-0 animate-dropIn">
                   Serving All of Florida
                 </div>
-                <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase animate-pulse shadow-lg">
+                <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase shadow-lg opacity-0 animate-dropInDelay1">
                   🎉 New Customer Special: 10% Off!
                 </div>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-lg opacity-0 animate-dropInDelay2">
                 Premium Pool Cages & <span className="text-accent">Screen Enclosures in FL</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-100 font-medium drop-shadow-md max-w-xl mx-auto md:mx-0">
+              <p className="text-lg md:text-xl text-gray-100 font-medium drop-shadow-md max-w-xl mx-auto md:mx-0 opacity-0 animate-dropInDelay3">
                 Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 10 years of experience.
               </p>
 
-              <div className="hidden md:flex flex-wrap gap-4 pt-4">
+              <div className="hidden md:flex flex-wrap gap-4 pt-4 opacity-0 animate-dropInDelay4">
                 <a
                   href={`tel:+${BUSINESS_INFO.phoneClean}`}
                   className="bg-yellow-500 hover:bg-yellow-400 text-black text-lg font-bold py-3 px-8 rounded-lg shadow-xl transition-colors flex items-center gap-2"
@@ -102,7 +103,7 @@ const Home: React.FC = () => {
               </div>
 
               {/* Mobile Only Buttons (below text context) */}
-              <div className="md:hidden flex flex-col gap-4 pt-6 w-full">
+              <div className="md:hidden flex flex-col gap-4 pt-6 w-full opacity-0 animate-dropInDelay4">
                 <a
                   href={`tel:+${BUSINESS_INFO.phoneClean}`}
                   className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
@@ -114,7 +115,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Right Content - Form */}
-            <div className="flex justify-center md:justify-end w-full">
+            <div className="flex justify-center md:justify-end w-full opacity-0 animate-dropInDelay5">
               <QuickQuoteForm />
             </div>
 
@@ -130,7 +131,9 @@ const Home: React.FC = () => {
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <ShieldCheck className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">10+ Years Experience</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <CountUp end={10} suffix="+" duration={2000} /> Years Experience
+              </h3>
               <p className="text-gray-600">Deep expertise in Florida building codes and aluminum structures.</p>
             </div>
             <div className="flex flex-col items-center p-4">

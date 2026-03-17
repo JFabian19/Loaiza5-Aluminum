@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, Clock, ChevronRight } from 'lucide-react';
+import { Menu, X, Phone, Mail, Clock, ChevronRight, Facebook } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { BUSINESS_INFO, DOMAIN } from '../constants';
 import { IMAGES } from '../images';
@@ -9,6 +9,8 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname === '/';
+  const isTransparent = isHome && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +72,10 @@ const Header: React.FC = () => {
               <Mail className="w-4 h-4 text-accent" />
               {BUSINESS_INFO.email}
             </a>
+            <a href="https://www.facebook.com/loaiza5/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-accent transition-colors">
+              <Facebook className="w-4 h-4 text-accent" />
+              Facebook
+            </a>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-accent" />
               Mon-Sat: 8:00 AM - 6:00 PM
@@ -80,7 +86,7 @@ const Header: React.FC = () => {
 
       {/* Main Navigation */}
       <header
-        className={`sticky top-0 w-full z-40 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4 shadow-md'
+        className={`${isHome ? 'fixed' : 'sticky'} w-full z-40 transition-all duration-300 ${isHome && !scrolled ? 'top-[40px]' : 'top-0'} ${isTransparent ? 'bg-transparent py-6' : scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4 shadow-md'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,10 +102,10 @@ const Header: React.FC = () => {
                 />
               </div>
               <div className="flex flex-col flex-shrink-0">
-                <span className="font-extrabold text-gray-900 text-[15px] sm:text-lg lg:text-xl tracking-tight leading-none uppercase">
+                <span className={`font-extrabold text-[15px] sm:text-lg lg:text-xl tracking-tight leading-none uppercase transition-colors ${isTransparent ? 'text-white' : 'text-gray-900'}`}>
                   Loaiza5 Aluminum
                 </span>
-                <span className="text-primary text-[9px] sm:text-[10px] lg:text-xs font-bold tracking-widest uppercase mt-0.5 sm:mt-1">
+                <span className={`text-[9px] sm:text-[10px] lg:text-xs font-bold tracking-widest uppercase mt-0.5 sm:mt-1 transition-colors ${isTransparent ? 'text-white/90' : 'text-primary'}`}>
                   Premium Enclosures
                 </span>
               </div>
@@ -112,8 +118,8 @@ const Header: React.FC = () => {
                   key={link.name}
                   to={link.path}
                   className={`relative px-4 py-2 rounded-md text-sm font-bold uppercase tracking-wide transition-all duration-200 group overflow-hidden ${isActive(link.path)
-                    ? 'text-primary'
-                    : 'text-gray-700 hover:text-primary'
+                      ? (isTransparent ? 'text-accent' : 'text-primary')
+                      : (isTransparent ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-primary')
                     }`}
                 >
                   <span className="relative z-10">{link.name}</span>
@@ -129,13 +135,13 @@ const Header: React.FC = () => {
             <div className="hidden lg:flex items-center gap-4 ml-auto">
               <a
                 href={`tel:+${BUSINESS_INFO.phoneClean}`}
-                className="flex items-center gap-2 text-gray-900 font-bold hover:text-primary transition-colors group"
+                className={`flex items-center gap-2 font-bold transition-colors group ${isTransparent ? 'text-white hover:text-accent' : 'text-gray-900 hover:text-primary'}`}
               >
                 <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                   <Phone className="w-5 h-5 text-primary group-hover:text-white" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs text-gray-500 font-semibold leading-none">Call Now</span>
+                  <span className={`text-xs font-semibold leading-none ${isTransparent ? 'text-white/80' : 'text-gray-500'}`}>Call Now</span>
                   <span className="text-base">{BUSINESS_INFO.phone}</span>
                 </div>
               </a>
@@ -164,7 +170,10 @@ const Header: React.FC = () => {
               </Link>
               <button
                 onClick={toggleMenu}
-                className="text-gray-900 p-2 rounded-lg bg-gray-50 border border-gray-100 shadow-sm hover:bg-gray-100 transition-colors focus:ring-2 focus:ring-primary focus:outline-none ml-1"
+                className={`p-2 rounded-lg border shadow-sm transition-colors focus:ring-2 focus:ring-primary focus:outline-none ml-1 ${isTransparent
+                    ? 'text-white bg-white/10 border-white/20 hover:bg-white/20'
+                    : 'text-gray-900 bg-gray-50 border-gray-100 hover:bg-gray-100'
+                  }`}
                 aria-label="Toggle Navigation"
               >
                 {isOpen ? <X className="w-6 h-6 text-primary" /> : <Menu className="w-6 h-6" />}

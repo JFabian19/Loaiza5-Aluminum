@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Send, CheckCircle, AlertCircle, ShieldCheck } from 'lucide-react';
 import { SERVICES } from '../constants';
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx0iAnw8T5nKgyZEoBlcQhuprL5gvWPt7fn0jU5i4JIi5J5h8nGKF8mFpxBx31W9bo5/exec';
 
 const QuickQuoteForm: React.FC = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -36,7 +38,7 @@ const QuickQuoteForm: React.FC = () => {
             });
 
             if (response.ok) {
-                setStatus('success');
+                navigate('/thank-you');
                 setFormData({ name: '', phone: '', service: '', message: '' });
             } else {
                 throw new Error('Network response was not ok');
@@ -47,34 +49,15 @@ const QuickQuoteForm: React.FC = () => {
         }
     };
 
-    if (status === 'success') {
-        return (
-            <div className="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-xl text-center border-t-4 border-accent animate-fadeIn min-h-[400px] flex flex-col items-center justify-center max-w-md w-full mx-auto md:mx-0">
-                <svg className="success-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle className="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-                    <path className="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" stroke="#fff" />
-                </svg>
-                <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Form Submitted!</h3>
-                <p className="text-gray-600 mb-8 text-lg font-medium">We will call you as soon as possible.</p>
-                <button
-                    onClick={() => setStatus('idle')}
-                    className="text-primary font-semibold underline hover:text-accent transition-colors"
-                >
-                    Send another request
-                </button>
-            </div>
-        );
-    }
-
     return (
-        <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-accent max-w-md w-full mx-auto md:mx-0">
-            <div className="mb-6 text-center md:text-left">
+        <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-accent max-w-md w-full mx-auto md:mx-0 opacity-0 animate-fadeInDown">
+            <div className="mb-6 text-center md:text-left opacity-0 animate-[fadeInDown_0.6s_ease-out_0.2s_forwards]">
                 <h3 className="text-2xl font-bold text-gray-900">Get a Fast Quote</h3>
                 <p className="text-sm text-gray-600">Enter your details and we'll contact you.</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
+                <div className="opacity-0 animate-[fadeInDown_0.6s_ease-out_0.3s_forwards]">
                     <label htmlFor="hero-name" className="block text-sm font-semibold text-gray-700 mb-1">Name</label>
                     <input
                         required
@@ -88,7 +71,7 @@ const QuickQuoteForm: React.FC = () => {
                     />
                 </div>
 
-                <div>
+                <div className="opacity-0 animate-[fadeInDown_0.6s_ease-out_0.4s_forwards]">
                     <label htmlFor="hero-phone" className="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
                     <input
                         required
@@ -104,7 +87,7 @@ const QuickQuoteForm: React.FC = () => {
                     />
                 </div>
 
-                <div>
+                <div className="opacity-0 animate-[fadeInDown_0.6s_ease-out_0.5s_forwards]">
                     <label htmlFor="hero-service" className="block text-sm font-semibold text-gray-700 mb-1">Service Needed</label>
                     <select
                         required
@@ -120,7 +103,7 @@ const QuickQuoteForm: React.FC = () => {
                     </select>
                 </div>
 
-                <div>
+                <div className="opacity-0 animate-[fadeInDown_0.6s_ease-out_0.6s_forwards]">
                     <div className="flex justify-between items-center mb-1">
                         <label htmlFor="hero-message" className="text-sm font-semibold text-gray-700">Description</label>
                         <span className="text-xs text-gray-400">{formData.message.length}/500</span>
@@ -140,13 +123,13 @@ const QuickQuoteForm: React.FC = () => {
                 <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full bg-primary hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-primary hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed opacity-0 animate-[fadeInDown_0.6s_ease-out_0.7s_forwards]"
                 >
                     {status === 'submitting' ? 'Sending...' : 'Get Free Quote'}
                     {!status.includes('submit') && <Send className="w-4 h-4" />}
                 </button>
 
-                <p className="text-xs text-center text-gray-500 mt-2 flex items-center justify-center gap-1">
+                <p className="text-xs text-center text-gray-500 mt-2 flex items-center justify-center gap-1 opacity-0 animate-[fadeInDown_0.6s_ease-out_0.8s_forwards]">
                     <ShieldCheck className="w-4 h-4 text-green-600" /> 100% Free Estimate. Fast & Secure.
                 </p>
 

@@ -12,6 +12,7 @@ const ServicePage = React.lazy(() => import('./pages/ServicePage'));
 const ServicesHub = React.lazy(() => import('./pages/ServicesHub'));
 const Projects = React.lazy(() => import('./pages/Projects'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
+const ThankYou = React.lazy(() => import('./pages/ThankYou'));
 
 // Lazy loading named exports
 const About = React.lazy(() => import('./pages/StaticPages').then(module => ({ default: module.About })));
@@ -51,6 +52,7 @@ const App: React.FC = () => {
 
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<ContactPage />} />
+                <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<Terms />} />
               </Routes>
