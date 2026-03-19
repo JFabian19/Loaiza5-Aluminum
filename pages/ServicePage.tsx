@@ -20,8 +20,8 @@ const ServicePage: React.FC = () => {
   return (
     <div className="flex flex-col">
       <SEO
-        title={`${service.title} in Florida`}
-        description={`${service.title}: ${service.description} Serving Tampa, Orlando, and more. 10+ Years Experience.`}
+        title={`${service.title} in Tampa, Orlando & FL | Loaiza5 Aluminum`}
+        description={`Top-rated ${service.title.toLowerCase()} in Tampa Bay, Orlando, and Southwest FL. ${service.description} Guaranteed quality & 10+ Years Experience.`}
         canonical={service.path}
         schema={{
           "@type": "Service",

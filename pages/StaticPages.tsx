@@ -33,34 +33,76 @@ export const About: React.FC = () => (
   </div>
 );
 
-export const ServiceAreasHub: React.FC = () => (
-  <div className="py-16 bg-white min-h-screen">
-    <SEO
-      title="Service Areas | Tampa, Orlando, Miami & Southwest Florida"
-      description="Loaiza5 Aluminum LLC serves the entire state of Florida. From Tampa Bay to South Florida, count on us for professional pool cage and screen installations."
-      canonical="/service-areas"
-    />
-    <div className="max-w-7xl mx-auto px-4 text-center mb-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-4">Areas We Serve</h1>
-      <p className="text-lg text-gray-600">Proudly serving homeowners throughout the entire state of Florida.</p>
-    </div>
-    <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {SERVICE_AREAS.map(area => (
-        <div key={area.id} className="bg-cream p-8 rounded-lg border border-gray-100 hover:shadow-md transition-shadow">
-          <h2 className="text-2xl font-bold text-primary mb-4 flex items-center gap-2">
-            <MapPin className="w-6 h-6" />
-            {area.name}
-          </h2>
-          <ul className="space-y-2 mb-6">
-            {area.cities.map(city => (
-              <li key={city} className="text-gray-700 border-b border-gray-200 pb-1 last:border-0">{city}</li>
-            ))}
-          </ul>
+import { useParams, Navigate } from 'react-router-dom';
+
+export const ServiceAreasHub: React.FC = () => {
+  const { area } = useParams<{ area: string }>();
+
+  if (area) {
+    const activeArea = SERVICE_AREAS.find(a => a.path.includes(area));
+    if (!activeArea) return <Navigate to="/service-areas" replace />;
+
+    return (
+      <div className="py-16 bg-white min-h-screen">
+        <SEO
+          title={`Pool Cages & Screen Enclosures in ${activeArea.name}`}
+          description={`Top-rated aluminum construction in ${activeArea.cities.join(', ')}. Expert pool cages, screen repairs, and lanais by Loaiza5 Aluminum.`}
+          canonical={`/service-areas/${area}`}
+        />
+        <div className="max-w-7xl mx-auto px-4 text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">{activeArea.name} Aluminum Contractors</h1>
+          <p className="text-lg text-gray-600">Proudly providing premium pool enclosures and screen rooms in <strong>{activeArea.cities.join(', ')}</strong>.</p>
         </div>
-      ))}
+        <div className="max-w-4xl mx-auto px-4">
+          <div className="bg-cream p-10 rounded-xl border border-primary/20 shadow-md text-center">
+             <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
+             <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to upgrade your outdoor space?</h2>
+             <p className="text-gray-700 mb-8 text-lg">Our experts are stationed in {activeArea.name} and ready to give you a free estimate.</p>
+             <Link to="/contact" className="bg-primary hover:bg-sky-700 text-white font-bold py-4 px-10 rounded-lg shadow-lg transition-colors inline-block">
+                Get a Free Quote in {activeArea.name}
+             </Link>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link to="/service-areas" className="text-primary hover:underline font-semibold flex items-center justify-center gap-2">
+               ← Back to All Service Areas
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="py-16 bg-white min-h-screen">
+      <SEO
+        title="Florida Service Areas | Tampa, Orlando, Southwest FL Pool Cages"
+        description="Loaiza5 Aluminum LLC serves all of Florida. From Tampa Bay to South Florida, count on us for professional pool cage and screen installations."
+        canonical="/service-areas"
+      />
+      <div className="max-w-7xl mx-auto px-4 text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Areas We Serve in Florida</h1>
+        <p className="text-lg text-gray-600">Find reliable aluminum contractors near you.</p>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {SERVICE_AREAS.map(a => (
+          <Link key={a.id} to={a.path} className="bg-cream p-8 rounded-lg border border-gray-100 hover:shadow-md hover:border-primary/30 transition-all group">
+            <h2 className="text-2xl font-bold text-primary mb-4 flex items-center gap-2 group-hover:text-sky-700">
+              <MapPin className="w-6 h-6" />
+              {a.name}
+            </h2>
+            <ul className="space-y-2 mb-6">
+              {a.cities.map(city => (
+                <li key={city} className="text-gray-700 border-b border-gray-200 pb-1 last:border-0">{city}</li>
+              ))}
+            </ul>
+            <span className="text-sm font-semibold text-primary underline">View Service Area</span>
+          </Link>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const PrivacyPolicy: React.FC = () => (
   <div className="py-16 max-w-3xl mx-auto px-4 prose prose-sky">
