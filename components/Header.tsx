@@ -86,7 +86,7 @@ const Header: React.FC = () => {
 
       {/* Main Navigation */}
       <header
-        className={`${isHome ? 'fixed' : 'sticky'} w-full z-40 transition-all duration-300 ${isHome && !scrolled ? 'top-[40px]' : 'top-0'} ${isTransparent ? 'bg-transparent py-6' : scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4 shadow-md'
+        className={`${isHome ? 'fixed' : 'sticky'} w-full z-40 transition-all duration-300 ${isHome && !scrolled ? 'lg:top-[40px] top-0' : 'top-0'} ${isTransparent ? 'bg-transparent lg:py-6 py-4' : scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white py-4 shadow-md'
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

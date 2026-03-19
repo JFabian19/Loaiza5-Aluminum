@@ -49,7 +49,7 @@ const Home: React.FC = () => {
         </script>
       </Helmet>
       {/* Hero Section */}
-      <section className="relative min-h-[700px] flex items-center text-white overflow-hidden pt-24 pb-12 md:pt-28 md:pb-0">
+      <section className="relative min-h-[700px] flex items-center text-white overflow-hidden pt-28 pb-12 md:pt-28 md:pb-0">
         <div className="absolute inset-0 z-0">
           <picture>
             <source media="(max-width: 768px)" srcSet={IMAGES.MAIN_HERO_MOBILE} />
