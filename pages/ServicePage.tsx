@@ -1,44 +1,72 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { SERVICES } from '../constants';
-import { CheckCircle, HelpCircle, ArrowRight } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { SERVICES, BUSINESS_INFO } from '../constants';
+import { CheckCircle, HelpCircle, ArrowRight, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
 import ContactForm from '../components/ContactForm';
 
 const ServicePage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  // Find service based on URL path logic in App.tsx routing
-  // Note: The routing in App.tsx maps paths like /services/pool-cages-rescreens to this component
-  // We need to match the data.
   const service = SERVICES.find(s => s.path.includes(id || ''));
 
   if (!service) {
     return <Navigate to="/services" replace />;
   }
 
+  // FAQ Schema for Google Rich Snippets
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": service.details.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  // Service Schema
+  const serviceSchema = {
+    "@type": "Service",
+    "serviceType": service.title,
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Loaiza5 Aluminum LLC",
+      "telephone": BUSINESS_INFO.phone,
+      "url": "https://loaiza5aluminum.online"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Florida"
+    },
+    "description": service.description
+  };
+
   return (
     <div className="flex flex-col">
       <SEO
         title={`${service.title} in Tampa, Orlando & FL | Loaiza5 Aluminum`}
-        description={`Top-rated ${service.title.toLowerCase()} in Tampa Bay, Orlando, and Southwest FL. ${service.description} Guaranteed quality & 10+ Years Experience.`}
+        description={`Top-rated ${service.title.toLowerCase()} in Tampa Bay, Orlando, and Southwest FL. ${service.description} Guaranteed quality & 15+ Years Experience.`}
         canonical={service.path}
-        schema={{
-          "@type": "Service",
-          "serviceType": service.title,
-          "provider": {
-            "@type": "HomeAndConstructionBusiness",
-            "name": "Loaiza5 Aluminum LLC"
-          },
-          "areaServed": "Florida"
-        }}
+        schema={serviceSchema}
       />
+      {/* FAQ Schema - separate so it doesn't get nested in @graph wrong */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+
       {/* Service Hero */}
       <section className="relative h-[400px] md:h-[500px] flex items-center justify-center text-white">
         <div className="absolute inset-0">
           <img
             src={service.details.heroImage}
-            alt={service.title}
+            alt={`${service.title} in Florida - Professional aluminum construction by Loaiza5`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60"></div>
@@ -98,17 +126,19 @@ const ServicePage: React.FC = () => {
               </div>
             </section>
 
-            {/* FAQs */}
+            {/* FAQs with proper semantic markup */}
             <section>
               <h2 className="text-3xl font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">Common Questions</h2>
-              <div className="space-y-6">
+              <div className="space-y-6" itemScope itemType="https://schema.org/FAQPage">
                 {service.details.faqs.map((faq, idx) => (
-                  <div key={idx} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                  <div key={idx} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                     <div className="flex gap-3 mb-2">
                       <HelpCircle className="w-5 h-5 text-accent flex-shrink-0" />
-                      <h4 className="font-bold text-gray-900">{faq.question}</h4>
+                      <h4 className="font-bold text-gray-900" itemProp="name">{faq.question}</h4>
                     </div>
-                    <p className="text-gray-600 pl-8">{faq.answer}</p>
+                    <div itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                      <p className="text-gray-600 pl-8" itemProp="text">{faq.answer}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -140,12 +170,22 @@ const ServicePage: React.FC = () => {
       </div>
 
       {/* Bottom CTA */}
-      <section className="bg-cream py-16 text-center">
+      <section className="bg-primary py-16 text-center">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Need expert help with your {service.title}?</h2>
-          <Link to="/contact" className="inline-block bg-primary hover:bg-sky-700 text-white font-bold py-4 px-10 rounded-lg shadow-lg transition-colors">
-            Get Your Free Quote Now
-          </Link>
+          <h2 className="text-3xl font-bold text-white mb-4">Need expert help with your {service.title}?</h2>
+          <p className="text-sky-100 text-lg mb-8">Get a free, no-obligation quote today. Our team is ready to help.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+              Get Your Free Quote Now
+            </Link>
+            <a
+              href={`tel:+${BUSINESS_INFO.phoneClean}`}
+              className="bg-sky-700 text-white border border-sky-600 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-sky-800 transition-colors text-lg flex items-center justify-center gap-2"
+            >
+              <Phone className="w-5 h-5" />
+              Call {BUSINESS_INFO.phone}
+            </a>
+          </div>
         </div>
       </section>
     </div>

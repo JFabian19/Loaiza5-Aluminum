@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PROJECTS, SERVICES } from '../constants';
-import { MapPin } from 'lucide-react';
+import { PROJECTS, SERVICES, BUSINESS_INFO } from '../constants';
+import { MapPin, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 
@@ -55,8 +55,9 @@ const Projects: React.FC = () => {
               <div className="h-64 overflow-hidden">
                 <img
                   src={project.imageUrl}
-                  alt={project.title}
+                  alt={`${project.title} - ${project.description} in ${project.location}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
                 />
               </div>
               <div className="p-6">
@@ -77,11 +78,22 @@ const Projects: React.FC = () => {
           </div>
         )}
 
-        <div className="mt-16 text-center bg-white p-12 rounded-xl shadow-sm border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Like what you see?</h2>
-          <Link to="/contact" className="text-primary font-bold hover:text-sky-800 text-lg underline">
-            Start your project today
-          </Link>
+        {/* CTA Section */}
+        <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">Like What You See?</h2>
+          <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">Let us bring the same quality craftsmanship to your home. Get a free estimate today.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+              Start Your Project
+            </Link>
+            <a
+              href={`tel:+${BUSINESS_INFO.phoneClean}`}
+              className="bg-sky-700 text-white border border-sky-600 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-sky-800 transition-colors text-lg flex items-center justify-center gap-2"
+            >
+              <Phone className="w-5 h-5" />
+              Call {BUSINESS_INFO.phone}
+            </a>
+          </div>
         </div>
       </div>
     </div>

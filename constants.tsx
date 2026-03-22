@@ -9,7 +9,7 @@ export const BUSINESS_INFO = {
   phoneClean: "18137846949",
   email: "loaiza5aluminum@gmail.com",
   location: "Serving all of Florida",
-  experience: "10+ Years",
+  experience: "15+ Years",
   logo: IMAGES.LOGO,
 };
 
@@ -177,11 +177,11 @@ export const SERVICES: ServiceRoute[] = [
 ];
 
 export const SERVICE_AREAS: ServiceArea[] = [
-  { id: 'tampa', name: "Tampa Bay Area", path: "/service-areas/tampa-bay", cities: ["Tampa", "St. Petersburg", "Clearwater", "Brandon", "Riverview"] },
-  { id: 'central', name: "Central Florida", path: "/service-areas/central-florida", cities: ["Orlando", "Kissimmee", "Lakeland", "Winter Haven"] },
-  { id: 'south', name: "South Florida", path: "/service-areas/south-florida", cities: ["Miami", "Fort Lauderdale", "West Palm Beach"] },
-  { id: 'southwest', name: "Southwest Florida", path: "/service-areas/southwest-florida", cities: ["Fort Myers", "Naples", "Cape Coral", "Sarasota"] },
-  { id: 'north', name: "North Florida", path: "/service-areas/north-florida", cities: ["Jacksonville", "Gainesville", "Ocala"] },
+  { id: 'tampa', name: "Tampa Bay Area", path: "/service-areas/tampa-bay", cities: ["Tampa", "St. Petersburg", "Clearwater", "Brandon", "Riverview", "Bradenton", "Wesley Chapel"] },
+  { id: 'central', name: "Central Florida", path: "/service-areas/central-florida", cities: ["Orlando", "Kissimmee", "Lakeland", "Winter Haven", "Sanford", "Clermont", "Apopka"] },
+  { id: 'south', name: "South Florida", path: "/service-areas/south-florida", cities: ["Miami", "Fort Lauderdale", "West Palm Beach", "Boca Raton", "Hollywood", "Pompano Beach"] },
+  { id: 'southwest', name: "Southwest Florida", path: "/service-areas/southwest-florida", cities: ["Fort Myers", "Naples", "Cape Coral", "Sarasota", "Port Charlotte", "Bonita Springs"] },
+  { id: 'north', name: "North Florida", path: "/service-areas/north-florida", cities: ["Jacksonville", "Gainesville", "Ocala", "St. Augustine", "Tallahassee"] },
 ];
 
 export const PROJECTS: Project[] = [

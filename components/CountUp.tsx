@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 interface CountUpProps {
   end: number;
@@ -10,50 +10,54 @@ interface CountUpProps {
 const CountUp: React.FC<CountUpProps> = ({ end, duration = 2000, suffix = '', prefix = '' }) => {
   const [count, setCount] = useState(0);
   const targetRef = useRef<HTMLSpanElement>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  
-  useEffect(() => {
+  const hasAnimatedRef = useRef(false);
+
+  const animateCount = useCallback(() => {
     let startTime: number | null = null;
     let animationFrameId: number;
-    let observer: IntersectionObserver;
 
-    const animateCount = (timestamp: number) => {
+    const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = timestamp - startTime;
       const percentage = Math.min(progress / duration, 1);
-      
       const easing = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
-      
       setCount(Math.floor(end * easing));
-      
+
       if (progress < duration) {
-        animationFrameId = requestAnimationFrame(animateCount);
+        animationFrameId = requestAnimationFrame(step);
       } else {
         setCount(end);
       }
     };
 
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries;
-      if (entry.isIntersecting && !hasAnimated) {
-        setHasAnimated(true);
-        animationFrameId = requestAnimationFrame(animateCount);
-      }
-    };
+    animationFrameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [end, duration]);
 
-    observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1,
-    });
+  useEffect(() => {
+    const currentTarget = targetRef.current;
+    if (!currentTarget) return;
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
-    }
+    let cleanup: (() => void) | undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !hasAnimatedRef.current) {
+          hasAnimatedRef.current = true;
+          cleanup = animateCount();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(currentTarget);
 
     return () => {
-      if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      if (observer) observer.disconnect();
+      observer.disconnect();
+      if (cleanup) cleanup();
     };
-  }, [end, duration, hasAnimated]);
+  }, [animateCount]);
 
   return (
     <span ref={targetRef}>

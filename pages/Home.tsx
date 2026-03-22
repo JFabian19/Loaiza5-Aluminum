@@ -13,7 +13,8 @@ import {
   Phone,
   Star,
   Quote,
-  HelpCircle
+  HelpCircle,
+  Users
 } from 'lucide-react';
 
 import QuickQuoteForm from '../components/QuickQuoteForm';
@@ -55,7 +56,7 @@ const Home: React.FC = () => {
             <source media="(max-width: 768px)" srcSet={IMAGES.MAIN_HERO_MOBILE} />
             <img
               src={IMAGES.MAIN_HERO}
-              alt="Beautiful Florida Pool Enclosure"
+              alt="Premium pool cage and screen enclosure installation in Florida by Loaiza5 Aluminum"
               className="w-full h-full object-cover object-center"
               loading="eager"
               // @ts-ignore
@@ -83,7 +84,7 @@ const Home: React.FC = () => {
                 Premium Pool Cages & <span className="text-accent">Screen Enclosures in FL</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-100 font-medium drop-shadow-md max-w-xl mx-auto md:mx-0 opacity-0 animate-dropInDelay3">
-                Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 10 years of experience.
+                Transform your outdoor space with Florida's trusted aluminum experts. High-quality materials, professional installation, and over 15 years of experience.
               </p>
 
               <div className="hidden md:flex flex-wrap gap-4 pt-4 opacity-0 animate-dropInDelay4">
@@ -126,29 +127,38 @@ const Home: React.FC = () => {
       {/* Trust Badges */}
       <section className="bg-white py-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <ShieldCheck className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                <CountUp end={10} suffix="+" duration={2000} /> Years Experience
+                <CountUp end={15} suffix="+" duration={2000} /> Years
               </h3>
-              <p className="text-gray-600">Deep expertise in Florida building codes and aluminum structures.</p>
+              <p className="text-gray-600 text-sm">Of aluminum construction experience in FL.</p>
+            </div>
+            <div className="flex flex-col items-center p-4">
+              <div className="bg-sky-100 p-4 rounded-full mb-4">
+                <Users className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                <CountUp end={500} suffix="+" duration={2500} /> Projects
+              </h3>
+              <p className="text-gray-600 text-sm">Completed across all of Florida.</p>
             </div>
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <ThumbsUp className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Quality Materials</h3>
-              <p className="text-gray-600">We use only high-grade aluminum and Phifer screen rated for Florida weather.</p>
+              <p className="text-gray-600 text-sm">High-grade aluminum and Phifer screen rated for FL weather.</p>
             </div>
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <MessageSquare className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Clear Communication</h3>
-              <p className="text-gray-600">From the first call to final walkthrough, we keep you informed.</p>
+              <p className="text-gray-600 text-sm">From the first call to final walkthrough.</p>
             </div>
           </div>
         </div>
@@ -237,7 +247,7 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <img src={IMAGES.PROJECTS.STORM_REPAIR} alt="Loaiza5 Professional Installation" className="w-full h-full object-cover" loading="lazy" />
+              <img src={IMAGES.PROJECTS.STORM_REPAIR} alt="Professional aluminum pool cage repair and installation by Loaiza5 in Florida" className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
         </div>
@@ -253,7 +263,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              "10+ Years of Local Experience",
+              "15+ Years of Local Experience",
               "Top-Grade Aluminum Alloys",
               "Phifer Screen (Standard & Pet)",
               "Owner-Operated Attention",

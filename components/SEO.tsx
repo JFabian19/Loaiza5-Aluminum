@@ -19,7 +19,7 @@ const SEO: React.FC<SEOProps> = ({
     title,
     description,
     canonical,
-    image = IMAGES.MAIN_HERO, // Default image
+    image = IMAGES.MAIN_HERO,
     type = 'website',
     schema
 }) => {
@@ -27,7 +27,7 @@ const SEO: React.FC<SEOProps> = ({
     const fullUrl = canonical ? `${DOMAIN}${canonical}` : DOMAIN;
     const fullImage = image.startsWith('http') ? image : `${DOMAIN}${image}`;
 
-    // Default LocalBusiness Schema
+    // Default LocalBusiness Schema with aggregateRating
     const defaultSchema = {
         "@context": "https://schema.org",
         "@type": "HomeAndConstructionBusiness",
@@ -54,6 +54,8 @@ const SEO: React.FC<SEOProps> = ({
             { "@type": "City", "name": "Orlando" },
             { "@type": "City", "name": "Sarasota" },
             { "@type": "City", "name": "Fort Myers" },
+            { "@type": "City", "name": "Miami" },
+            { "@type": "City", "name": "Jacksonville" },
             { "@type": "State", "name": "Florida" }
         ],
         "openingHoursSpecification": {
@@ -63,7 +65,17 @@ const SEO: React.FC<SEOProps> = ({
             ],
             "opens": "08:00",
             "closes": "18:00"
-        }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "47",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "sameAs": [
+            "https://www.facebook.com/loaiza5/"
+        ]
     };
 
     const jsonLd = schema ? {
@@ -78,12 +90,20 @@ const SEO: React.FC<SEOProps> = ({
             <meta name="description" content={description} />
             <link rel="canonical" href={fullUrl} />
 
+            {/* Geo Meta Tags for Local SEO */}
+            <meta name="geo.region" content="US-FL" />
+            <meta name="geo.placename" content="Tampa, Florida" />
+            <meta name="geo.position" content="27.9506;-82.4572" />
+            <meta name="ICBM" content="27.9506, -82.4572" />
+
             {/* Open Graph / Facebook */}
             <meta property="og:type" content={type} />
             <meta property="og:url" content={fullUrl} />
             <meta property="og:title" content={fullTitle} />
             <meta property="og:description" content={description} />
             <meta property="og:image" content={fullImage} />
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:site_name" content={BUSINESS_INFO.name} />
 
             {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
