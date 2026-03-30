@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance: Use content-visibility for below-fold sections */
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize image rendering */
+img {
+  content-visibility: auto;
+}
+
 /* Visa Payment Style Success Animation */
 .success-checkmark {
     width: 80px;

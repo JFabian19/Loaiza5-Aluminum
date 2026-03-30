@@ -11,7 +11,30 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [react()],
     build: {
-      target: 'es2015'
+      target: 'es2015',
+      // Better code splitting for smaller initial bundle
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Separate vendor chunks for better caching
+            'react-vendor': ['react', 'react-dom'],
+            'router': ['react-router-dom'],
+            'icons': ['lucide-react'],
+          },
+        },
+      },
+      // Enable CSS code splitting
+      cssCodeSplit: true,
+      // Smaller chunk size warnings
+      chunkSizeWarningLimit: 50,
+      // Minify with terser for smaller output
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        },
+      },
     },
     resolve: {
       alias: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -18,7 +18,9 @@ import {
 } from 'lucide-react';
 
 import QuickQuoteForm from '../components/QuickQuoteForm';
-import CountUp from '../components/CountUp';
+
+// Lazy load CountUp since it's below the fold
+const CountUp = lazy(() => import('../components/CountUp'));
 
 const Home: React.FC = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -59,8 +61,11 @@ const Home: React.FC = () => {
               alt="Premium pool cage and screen enclosure installation in Florida by Loaiza5 Aluminum"
               className="w-full h-full object-cover object-center"
               loading="eager"
+              decoding="async"
               // @ts-ignore
               fetchpriority="high"
+              width={1920}
+              height={1080}
             />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
@@ -133,7 +138,9 @@ const Home: React.FC = () => {
                 <ShieldCheck className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                <CountUp end={15} suffix="+" duration={2000} /> Years
+                <Suspense fallback={<span>15+</span>}>
+                  <CountUp end={15} suffix="+" duration={2000} />
+                </Suspense> Years
               </h3>
               <p className="text-gray-600 text-sm">Of aluminum construction experience in FL.</p>
             </div>
@@ -142,7 +149,9 @@ const Home: React.FC = () => {
                 <Users className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">
-                <CountUp end={500} suffix="+" duration={2500} /> Projects
+                <Suspense fallback={<span>500+</span>}>
+                  <CountUp end={500} suffix="+" duration={2500} />
+                </Suspense> Projects
               </h3>
               <p className="text-gray-600 text-sm">Completed across all of Florida.</p>
             </div>
@@ -189,6 +198,9 @@ const Home: React.FC = () => {
                       alt={service.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      decoding="async"
+                      width={700}
+                      height={467}
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                   </div>
@@ -247,7 +259,15 @@ const Home: React.FC = () => {
               </div>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
-              <img src={IMAGES.PROJECTS.STORM_REPAIR} alt="Professional aluminum pool cage repair and installation by Loaiza5 in Florida" className="w-full h-full object-cover" loading="lazy" />
+              <img
+                src={IMAGES.PROJECTS.STORM_REPAIR}
+                alt="Professional aluminum pool cage repair and installation by Loaiza5 in Florida"
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width={700}
+                height={467}
+              />
             </div>
           </div>
         </div>

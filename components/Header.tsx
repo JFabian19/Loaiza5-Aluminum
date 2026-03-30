@@ -99,6 +99,9 @@ const Header: React.FC = () => {
                   src={IMAGES.LOGO}
                   alt={`${BUSINESS_INFO.name} Logo`}
                   className="h-10 sm:h-12 lg:h-14 w-auto object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  width={112}
+                  height={112}
+                  decoding="async"
                 />
               </div>
               <div className="flex flex-col flex-shrink-0">

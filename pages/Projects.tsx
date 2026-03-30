@@ -58,6 +58,9 @@ const Projects: React.FC = () => {
                   alt={`${project.title} - ${project.description} in ${project.location}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  decoding="async"
+                  width={700}
+                  height={467}
                 />
               </div>
               <div className="p-6">

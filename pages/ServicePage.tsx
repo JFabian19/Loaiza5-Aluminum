@@ -68,6 +68,9 @@ const ServicePage: React.FC = () => {
             src={service.details.heroImage}
             alt={`${service.title} in Florida - Professional aluminum construction by Loaiza5`}
             className="w-full h-full object-cover"
+            width={700}
+            height={467}
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/60"></div>
         </div>

@@ -19,6 +19,10 @@ const Footer: React.FC = () => {
                 src={IMAGES.LOGO}
                 alt={`${BUSINESS_INFO.name} Logo`}
                 className="h-10 w-auto object-contain bg-white/10 rounded px-1"
+                width={112}
+                height={112}
+                decoding="async"
+                loading="lazy"
               />
               <span className="text-white font-bold text-lg">{BUSINESS_INFO.name}</span>
             </div>
