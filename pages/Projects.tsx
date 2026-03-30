@@ -84,9 +84,9 @@ const Projects: React.FC = () => {
         {/* CTA Section */}
         <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Like What You See?</h2>
-          <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">Let us bring the same quality craftsmanship to your home. Get a free estimate today.</p>
+          <p className="text-white text-lg mb-8 max-w-2xl mx-auto">Let us bring the same quality craftsmanship to your home. Get a free estimate today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+            <Link to="/contact" className="bg-white text-sky-800 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
               Start Your Project
             </Link>
             <a

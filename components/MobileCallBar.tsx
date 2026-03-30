@@ -15,7 +15,7 @@ const MobileCallBar: React.FC = () => {
       </a>
       <Link
         to="/contact"
-        className="flex-1 flex items-center justify-center gap-2 py-4 bg-accent text-white font-bold hover:bg-sky-500 transition-colors"
+        className="flex-1 flex items-center justify-center gap-2 py-4 bg-sky-800 text-white font-bold hover:bg-sky-900 transition-colors"
       >
         <FileText className="w-5 h-5" />
         Get Quote

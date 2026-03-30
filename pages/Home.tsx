@@ -137,36 +137,36 @@ const Home: React.FC = () => {
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <ShieldCheck className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
                 <Suspense fallback={<span>15+</span>}>
                   <CountUp end={15} suffix="+" duration={2000} />
                 </Suspense> Years
-              </h3>
+              </h2>
               <p className="text-gray-600 text-sm">Of aluminum construction experience in FL.</p>
             </div>
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <Users className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">
                 <Suspense fallback={<span>500+</span>}>
                   <CountUp end={500} suffix="+" duration={2500} />
                 </Suspense> Projects
-              </h3>
+              </h2>
               <p className="text-gray-600 text-sm">Completed across all of Florida.</p>
             </div>
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <ThumbsUp className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Quality Materials</h3>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Quality Materials</h2>
               <p className="text-gray-600 text-sm">High-grade aluminum and Phifer screen rated for FL weather.</p>
             </div>
             <div className="flex flex-col items-center p-4">
               <div className="bg-sky-100 p-4 rounded-full mb-4">
                 <MessageSquare className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Clear Communication</h3>
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Clear Communication</h2>
               <p className="text-gray-600 text-sm">From the first call to final walkthrough.</p>
             </div>
           </div>
@@ -208,13 +208,13 @@ const Home: React.FC = () => {
                     <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-6 text-primary">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-sky-800 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       {service.description}
                     </p>
-                    <span className="inline-flex items-center text-primary font-semibold text-sm">
+                    <span className="inline-flex items-center text-sky-800 font-semibold text-sm">
                       Learn More <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
@@ -224,7 +224,7 @@ const Home: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/services" className="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-lg transition-colors">
+            <Link to="/services" className="inline-block border-2 border-sky-800 text-sky-800 hover:bg-sky-800 hover:text-white font-bold py-3 px-8 rounded-lg transition-colors">
               View All Services
             </Link>
           </div>
@@ -251,7 +251,7 @@ const Home: React.FC = () => {
                       {idx + 1}
                     </div>
                     <div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-1">{step.title}</h4>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">{step.title}</h3>
                       <p className="text-gray-600">{step.desc}</p>
                     </div>
                   </div>
@@ -278,7 +278,7 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Florida Homeowners Choose Us</h2>
-            <p className="text-gray-400 text-lg">We deliver superior craftsmanship at competitive prices.</p>
+            <p className="text-gray-300 text-lg">We deliver superior craftsmanship at competitive prices.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -326,8 +326,8 @@ const Home: React.FC = () => {
                     "{testimonial.text}"
                   </p>
                   <div>
-                    <h4 className="font-bold text-gray-900 text-lg">{testimonial.author}</h4>
-                    <p className="text-primary font-medium text-sm">{testimonial.location}</p>
+                    <p className="font-bold text-gray-900 text-lg">{testimonial.author}</p>
+                    <p className="text-sky-800 font-medium text-sm">{testimonial.location}</p>
                   </div>
                 </div>
               ))}
@@ -352,11 +352,11 @@ const Home: React.FC = () => {
       <section className="py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Upgrade Your Outdoor Space?</h2>
-          <p className="text-sky-100 text-xl mb-10">Get a free, no-obligation quote today. Serving Tampa, Orlando, Miami, and surrounding areas.</p>
+          <p className="text-white text-xl mb-10">Get a free, no-obligation quote today. Serving Tampa, Orlando, Miami, and surrounding areas.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-primary text-lg font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors"
+              className="bg-white text-sky-800 text-lg font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors"
             >
               Get Started
             </Link>

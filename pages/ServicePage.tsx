@@ -176,9 +176,9 @@ const ServicePage: React.FC = () => {
       <section className="bg-primary py-16 text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-white mb-4">Need expert help with your {service.title}?</h2>
-          <p className="text-sky-100 text-lg mb-8">Get a free, no-obligation quote today. Our team is ready to help.</p>
+          <p className="text-white text-lg mb-8">Get a free, no-obligation quote today. Our team is ready to help.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+            <Link to="/contact" className="bg-white text-sky-800 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
               Get Your Free Quote Now
             </Link>
             <a

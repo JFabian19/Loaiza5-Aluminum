@@ -22,7 +22,7 @@ export const About: React.FC = () => (
           We specialize in designing and building durable, high-quality pool cages, screen rooms, and lanais that withstand the harsh Florida climate.
           Our mission is to help homeowners reclaim their outdoor spaces from bugs, debris, and intense sun, allowing you to enjoy the beautiful weather year-round.
         </p>
-        <h2 className="text-2xl font-bold text-primary mt-8">Our Core Values</h2>
+        <h2 className="text-2xl font-bold text-sky-800 mt-8">Our Core Values</h2>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong>Quality Integrity:</strong> We never cut corners on materials or fasteners.</li>
           <li><strong>Safety First:</strong> Whether it's a new build or a dangerous tear-down, safety is paramount.</li>
@@ -38,7 +38,7 @@ export const About: React.FC = () => (
             </Link>
             <a
               href={`tel:+${BUSINESS_INFO.phoneClean}`}
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center justify-center gap-2"
+              className="border-2 border-sky-800 text-sky-800 hover:bg-sky-800 hover:text-white font-bold py-3 px-8 rounded-lg transition-colors flex items-center justify-center gap-2"
             >
               <Phone className="w-5 h-5" />
               {BUSINESS_INFO.phone}
@@ -202,9 +202,9 @@ export const ServiceAreasHub: React.FC = () => {
           {/* CTA */}
           <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
             <h2 className="text-3xl font-bold mb-4">Ready to Start Your {activeArea.name} Project?</h2>
-            <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">Our experts are ready to give you a free, no-obligation estimate.</p>
+            <p className="text-white text-lg mb-8 max-w-2xl mx-auto">Our experts are ready to give you a free, no-obligation estimate.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+              <Link to="/contact" className="bg-white text-sky-800 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
                 Get a Free Quote in {activeArea.name}
               </Link>
               <a
@@ -218,7 +218,7 @@ export const ServiceAreasHub: React.FC = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <Link to="/service-areas" className="text-primary hover:underline font-semibold flex items-center justify-center gap-2">
+            <Link to="/service-areas" className="text-sky-800 hover:underline font-semibold flex items-center justify-center gap-2">
                ← Back to All Service Areas
             </Link>
           </div>
@@ -247,7 +247,7 @@ export const ServiceAreasHub: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICE_AREAS.map(a => (
             <Link key={a.id} to={a.path} className="bg-white p-8 rounded-lg border border-gray-100 hover:shadow-lg hover:border-primary/30 transition-all group">
-              <h2 className="text-2xl font-bold text-primary mb-4 flex items-center gap-2 group-hover:text-sky-700">
+              <h2 className="text-2xl font-bold text-sky-800 mb-4 flex items-center gap-2 group-hover:text-sky-700">
                 <MapPin className="w-6 h-6" />
                 {a.name}
               </h2>
@@ -256,7 +256,7 @@ export const ServiceAreasHub: React.FC = () => {
                   <li key={city} className="text-gray-700 border-b border-gray-200 pb-1 last:border-0">{city}</li>
                 ))}
               </ul>
-              <span className="inline-flex items-center text-primary font-semibold text-sm">
+              <span className="inline-flex items-center text-sky-800 font-semibold text-sm">
                 View Service Area <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
               </span>
             </Link>
@@ -266,8 +266,8 @@ export const ServiceAreasHub: React.FC = () => {
         {/* CTA */}
         <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Don't See Your Area?</h2>
-          <p className="text-sky-100 text-lg mb-8">We serve all of Florida. Contact us and we'll confirm we can help with your project.</p>
-          <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg inline-block">
+          <p className="text-white text-lg mb-8">We serve all of Florida. Contact us and we'll confirm we can help with your project.</p>
+          <Link to="/contact" className="bg-white text-sky-800 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg inline-block">
             Contact Us
           </Link>
         </div>
@@ -286,9 +286,9 @@ export const PrivacyPolicy: React.FC = () => (
     <h1>Privacy Policy</h1>
     <p>Last updated: March 2026</p>
     <p>At {BUSINESS_INFO.name}, we are committed to protecting your privacy. This policy outlines how we handle your data.</p>
-    <h3>Information We Collect</h3>
+    <h2>Information We Collect</h2>
     <p>We collect information you provide directly to us via our contact forms, including name, phone number, email, and address.</p>
-    <h3>How We Use Your Information</h3>
+    <h2>How We Use Your Information</h2>
     <p>We use this information solely to provide quotes, schedule services, and communicate regarding your project. We do not sell your data to third parties.</p>
   </div>
 );
@@ -302,9 +302,9 @@ export const Terms: React.FC = () => (
     />
     <h1>Terms of Service</h1>
     <p>Last updated: March 2026</p>
-    <h3>Agreement</h3>
+    <h2>Agreement</h2>
     <p>By using this website and requesting our services, you agree to these terms.</p>
-    <h3>Estimates</h3>
+    <h2>Estimates</h2>
     <p>Quotes provided online are estimates based on provided information. Final pricing is subject to on-site inspection.</p>
   </div>
 );

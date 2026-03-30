@@ -205,6 +205,7 @@ const Header: React.FC = () => {
           <button
             onClick={closeMenu}
             className="p-2 border border-gray-200 rounded-full bg-white text-gray-500 hover:text-red-500 hover:border-red-200 hover:bg-red-50 transition-all shadow-sm"
+            aria-label="Close menu"
           >
             <X className="w-5 h-5" />
           </button>
@@ -230,7 +231,8 @@ const Header: React.FC = () => {
         <div className="p-6 border-t border-gray-100 bg-gray-50 space-y-4">
           <a
             href={`tel:+${BUSINESS_INFO.phoneClean}`}
-            className="flex items-center justify-center gap-3 w-full bg-white border-2 border-primary text-primary font-bold py-4 rounded-xl hover:bg-primary/5 transition-all shadow-sm"
+            className="flex items-center justify-center gap-3 w-full bg-white border-2 border-sky-800 text-sky-800 font-bold py-4 rounded-xl hover:bg-primary/5 transition-all shadow-sm"
+            aria-label={`Call us at ${BUSINESS_INFO.phone}`}
           >
             <Phone className="w-6 h-6" />
             {BUSINESS_INFO.phone}

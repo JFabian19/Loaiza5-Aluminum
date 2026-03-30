@@ -52,7 +52,7 @@ const QuickQuoteForm: React.FC = () => {
     return (
         <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-2xl border-t-4 border-accent max-w-md w-full mx-auto md:mx-0 opacity-0 animate-fadeInDown">
             <div className="mb-6 text-center md:text-left opacity-0 animate-[fadeInDown_0.6s_ease-out_0.2s_forwards]">
-                <h3 className="text-2xl font-bold text-gray-900">Get a Fast Quote</h3>
+                <h2 className="text-2xl font-bold text-gray-900">Get a Fast Quote</h2>
                 <p className="text-sm text-gray-600">Enter your details and we'll contact you.</p>
             </div>
 
@@ -123,7 +123,7 @@ const QuickQuoteForm: React.FC = () => {
                 <button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full bg-primary hover:bg-sky-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed opacity-0 animate-[fadeInDown_0.6s_ease-out_0.7s_forwards]"
+                    className="w-full bg-sky-800 hover:bg-sky-900 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed opacity-0 animate-[fadeInDown_0.6s_ease-out_0.7s_forwards]"
                 >
                     {status === 'submitting' ? 'Sending...' : 'Get Free Quote'}
                     {!status.includes('submit') && <Send className="w-4 h-4" />}

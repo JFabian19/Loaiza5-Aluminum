@@ -30,13 +30,16 @@ const ServicesHub: React.FC = () => (
                                 alt={`${s.title} services in Florida by Loaiza5 Aluminum`}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                 loading="lazy"
+                                decoding="async"
+                                width={700}
+                                height={467}
                             />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
                         </div>
                         <div className="p-8 flex flex-col flex-grow">
-                            <h2 className="text-2xl font-bold mb-4 text-black group-hover:text-primary transition-colors">{s.title}</h2>
+                            <h2 className="text-2xl font-bold mb-4 text-black group-hover:text-sky-800 transition-colors">{s.title}</h2>
                             <p className="text-gray-600 mb-6 flex-grow">{s.description}</p>
-                            <span className="inline-flex items-center text-primary font-bold text-sm self-start">
+                            <span className="inline-flex items-center text-sky-800 font-bold text-sm self-start">
                                 View Details <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                             </span>
                         </div>
@@ -47,9 +50,9 @@ const ServicesHub: React.FC = () => (
             {/* CTA Section */}
             <div className="mt-16 bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
                 <h2 className="text-3xl font-bold mb-4">Not Sure What You Need?</h2>
-                <p className="text-sky-100 text-lg mb-8 max-w-2xl mx-auto">No problem! Contact us and our team will help you find the best solution for your home.</p>
+                <p className="text-white text-lg mb-8 max-w-2xl mx-auto">No problem! Contact us and our team will help you find the best solution for your home.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/contact" className="bg-white text-primary font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
+                    <Link to="/contact" className="bg-white text-sky-800 font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors text-lg">
                         Get a Free Quote
                     </Link>
                     <a
