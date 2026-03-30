@@ -10,6 +10,10 @@ export default defineConfig(({ mode }) => {
       host: '0.0.0.0',
     },
     plugins: [react()],
+    // Drop console.log and debugger in production builds
+    esbuild: {
+      drop: mode === 'production' ? ['console', 'debugger'] : [],
+    },
     build: {
       target: 'es2015',
       // Better code splitting for smaller initial bundle
@@ -27,14 +31,6 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       // Smaller chunk size warnings
       chunkSizeWarningLimit: 50,
-      // Minify with terser for smaller output
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true,
-        },
-      },
     },
     resolve: {
       alias: {
