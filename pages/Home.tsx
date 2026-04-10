@@ -81,7 +81,7 @@ const Home: React.FC = () => {
                   Serving All of Florida
                 </div>
                 <div className="inline-block bg-yellow-500 text-black px-4 py-2 rounded-full text-sm font-bold tracking-wide uppercase shadow-lg opacity-0 animate-dropInDelay1">
-                  🎉 New Customer Special: 10% Off!
+                  🔥 This Week Only: 10% Off New Projects!
                 </div>
               </div>
 
@@ -109,14 +109,15 @@ const Home: React.FC = () => {
               </div>
 
               {/* Mobile Only Buttons (below text context) */}
-              <div className="md:hidden flex flex-col gap-4 pt-6 w-full opacity-0 animate-dropInDelay4">
+              <div className="md:hidden flex flex-col gap-3 pt-6 w-full opacity-0 animate-dropInDelay4">
                 <a
                   href={`tel:+${BUSINESS_INFO.phoneClean}`}
                   className="w-full bg-yellow-500 hover:bg-yellow-400 text-black font-bold py-4 rounded-lg shadow-lg flex items-center justify-center gap-2"
                 >
                   <Phone className="w-5 h-5" />
-                  Call Now
+                  Call Now — Free Estimate
                 </a>
+                <p className="text-center text-white/70 text-xs">Or scroll down to fill out our quick 30-second form ↓</p>
               </div>
             </div>
 
@@ -348,22 +349,49 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary">
+      {/* Mid-page CTA for people who didn't convert on hero */}
+      <section className="py-16 bg-cream border-y border-gray-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+          <p className="text-gray-600 text-lg mb-8">Our team is ready to help. Send us a text for a quick response, or call us directly.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`sms:+${BUSINESS_INFO.phoneClean}?body=${encodeURIComponent("Hi! I have a question about your aluminum services.")}`}
+              className="bg-sky-600 hover:bg-sky-700 text-white text-lg font-bold py-4 px-10 rounded-lg shadow-lg transition-colors flex items-center justify-center gap-2"
+            >
+              💬 Text Us Now
+            </a>
+            <a
+              href={`tel:+${BUSINESS_INFO.phoneClean}`}
+              className="bg-white border-2 border-sky-800 text-sky-800 hover:bg-sky-800 hover:text-white text-lg font-bold py-4 px-10 rounded-lg shadow-lg transition-colors flex items-center justify-center gap-2"
+            >
+              <Phone className="w-5 h-5" />
+              {BUSINESS_INFO.phone}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-br from-sky-700 to-sky-900">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <div className="inline-block bg-yellow-400 text-black px-4 py-1.5 rounded-full text-sm font-bold mb-6 shadow-md">
+            🎉 Limited Spots Available This Month
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Upgrade Your Outdoor Space?</h2>
-          <p className="text-white text-xl mb-10">Get a free, no-obligation quote today. Serving Tampa, Orlando, Miami, and surrounding areas.</p>
+          <p className="text-sky-100 text-xl mb-10">Join 500+ Florida homeowners who trust Loaiza5 Aluminum. Get a free, no-obligation quote today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="bg-white text-sky-800 text-lg font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-gray-100 transition-colors"
+              className="bg-yellow-500 hover:bg-yellow-400 text-black text-lg font-extrabold py-4 px-10 rounded-lg shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5"
             >
-              Get Started
+              Get My Free Quote →
             </Link>
             <a
               href={`tel:+${BUSINESS_INFO.phoneClean}`}
-              className="bg-sky-700 text-white border border-sky-600 text-lg font-bold py-4 px-10 rounded-lg shadow-lg hover:bg-sky-800 transition-colors"
+              className="bg-white/10 text-white border-2 border-white/30 hover:bg-white/20 text-lg font-bold py-4 px-10 rounded-lg shadow-lg transition-colors flex items-center justify-center gap-2"
             >
+              <Phone className="w-5 h-5" />
               Call {BUSINESS_INFO.phone}
             </a>
           </div>

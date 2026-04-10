@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MobileCallBar from './components/MobileCallBar';
 import ScrollToTop from './components/ScrollToTop';
+import MessageButton from './components/WhatsAppButton';
 
 import Home from './pages/Home';
 
@@ -13,6 +14,7 @@ const ServicesHub = React.lazy(() => import('./pages/ServicesHub'));
 const Projects = React.lazy(() => import('./pages/Projects'));
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
 const ThankYou = React.lazy(() => import('./pages/ThankYou'));
+const ExitIntentPopup = React.lazy(() => import('./components/ExitIntentPopup'));
 
 // Lazy loading named exports
 const About = React.lazy(() => import('./pages/StaticPages').then(module => ({ default: module.About })));
@@ -61,6 +63,10 @@ const App: React.FC = () => {
 
           <Footer />
           <MobileCallBar />
+          <MessageButton />
+          <React.Suspense fallback={null}>
+            <ExitIntentPopup />
+          </React.Suspense>
         </div>
       </Router>
     </HelmetProvider>

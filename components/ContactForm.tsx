@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SERVICES } from '../constants';
 import { ContactFormData } from '../types';
-import { Send, AlertCircle, ShieldCheck } from 'lucide-react';
+import { Send, AlertCircle, ShieldCheck, Star, MessageCircle } from 'lucide-react';
+import { BUSINESS_INFO } from '../constants';
 
 const ContactForm: React.FC = () => {
   const navigate = useNavigate();
@@ -102,7 +103,15 @@ const ContactForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 opacity-0 animate-fadeInDown">
-      <h3 className="text-2xl font-bold text-primary mb-6 opacity-0 animate-fadeInDownDelay1">Get Your Free Quote</h3>
+      <div className="flex items-center gap-1 mb-2">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star key={star} className="w-4 h-4 text-yellow-400 fill-current" />
+        ))}
+        <span className="text-sm font-bold text-gray-700 ml-1">5.0</span>
+        <span className="text-xs text-gray-500">(47 reviews)</span>
+      </div>
+      <h3 className="text-2xl font-bold text-primary mb-1 opacity-0 animate-fadeInDownDelay1">Get Your Free Quote</h3>
+      <p className="text-sm text-gray-500 opacity-0 animate-fadeInDownDelay1">We typically respond within 1-2 hours</p>
 
       {/* Honeypot field - hidden */}
       <input
@@ -226,6 +235,18 @@ const ContactForm: React.FC = () => {
           <p className="text-xs text-center text-gray-500 mt-3 flex items-center justify-center gap-1">
             <ShieldCheck className="w-4 h-4 text-green-600" /> 100% Free Estimate. Fast & Secure.
           </p>
+          
+          {/* Text Message Alternative */}
+          <div className="mt-4 pt-4 border-t border-gray-100 text-center">
+            <p className="text-xs text-gray-400 mb-2">Prefer texting?</p>
+            <a
+              href={`sms:+${BUSINESS_INFO.phoneClean}?body=${encodeURIComponent("Hi! I'd like a free quote for aluminum services.")}`}
+              className="inline-flex items-center gap-2 bg-sky-50 hover:bg-sky-100 text-sky-700 font-semibold text-sm py-2.5 px-5 rounded-lg transition-colors border border-sky-200"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Text Us Instead
+            </a>
+          </div>
         </div>
       </div>
     </form>

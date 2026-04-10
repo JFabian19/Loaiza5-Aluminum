@@ -1,4 +1,14 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /thank-you
 
 Sitemap: https://loaiza5aluminum.online/sitemap.xml
+
+# Ensure bots can access all important resources
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
